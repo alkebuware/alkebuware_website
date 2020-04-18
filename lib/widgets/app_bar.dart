@@ -1,0 +1,86 @@
+import 'package:alkebuware_website/colors.dart';
+import 'package:alkebuware_website/main.dart';
+import 'package:alkebuware_website/pages/home.dart';
+import 'package:alkebuware_website/text.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'rouded_button.dart';
+
+class AAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final GlobalKey<NavigatorState> navigatorKey;
+
+  const AAppBar({Key key, this.navigatorKey}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      elevation: 4,
+      child: Container(
+        color: aDarkBlue,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(children: [
+            Expanded(
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      if (AppState.of(context).currentRoute !=
+                          HomePage.routeName) {
+                        navigatorKey.currentState
+                            .pushReplacementNamed(HomePage.routeName);
+                      }
+                    },
+                    splashColor: Colors.white24,
+                    highlightColor: Colors.white24,
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.asset(
+                      "images/logo.png",
+                      height: 50,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: RoundedButton(
+                backgroundColor: Colors.white,
+                text: "Let's Chat 😀",
+                textStyle: aOrange10Medium,
+              ),
+            ),
+            MenuButton(),
+          ]),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(80);
+}
+
+class MenuButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        splashColor: Colors.white24,
+        highlightColor: Colors.white24,
+        borderRadius: BorderRadius.circular(100),
+        onTap: () {},
+        child: Column(
+          children: <Widget>[
+            Text("Menu", style: white10Medium),
+            Image.asset("images/menu.png")
+          ],
+        ),
+      ),
+    );
+  }
+}
