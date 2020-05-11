@@ -1,0 +1,1 @@
+#!/usr/bin/env bashset +eset +xls ~flutter-beta build web --releasescp -r build/web/* alkebuwa@alkebuware.com:/home4/alkebuwa/public_html/

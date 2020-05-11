@@ -6,9 +6,14 @@ class RoundedButton extends StatelessWidget {
   final TextStyle textStyle;
   final Color backgroundColor;
   final VoidCallback onTap;
+  final EdgeInsets padding;
 
-  const RoundedButton(
-      {Key key, this.text, this.textStyle, this.backgroundColor, this.onTap})
+  const RoundedButton({Key key,
+    this.text,
+    @required this.textStyle,
+    this.backgroundColor,
+    this.onTap,
+    this.padding = const EdgeInsets.symmetric(vertical: 4, horizontal: 8)})
       : super(key: key);
 
   @override
@@ -21,9 +26,10 @@ class RoundedButton extends StatelessWidget {
       child: InkWell(
         splashColor: textStyle.color.withOpacity(.2),
         highlightColor: textStyle.color.withOpacity(.2),
+        borderRadius: BorderRadius.circular(100),
         onTap: onTap ?? () {},
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          padding: padding,
           child: Text(text, style: textStyle),
         ),
       ),

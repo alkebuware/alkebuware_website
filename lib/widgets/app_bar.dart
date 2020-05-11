@@ -1,6 +1,8 @@
 import 'package:alkebuware_website/colors.dart';
+import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/pages/home.dart';
+import 'package:alkebuware_website/pages/menu_dialog.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,12 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Container(
         color: aDarkBlue,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.only(
+            left: 16.0,
+            right: 16,
+            top: 16 + getStatusBarHeight(context),
+            bottom: 16,
+          ),
           child: Row(children: [
             Expanded(
               child: Container(
@@ -38,7 +45,7 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
                     highlightColor: Colors.white24,
                     borderRadius: BorderRadius.circular(100),
                     child: Image.asset(
-                      "images/logo.png",
+                      "assets/images/logo.png",
                       height: 50,
                     ),
                   ),
@@ -67,18 +74,25 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
 class MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        splashColor: Colors.white24,
-        highlightColor: Colors.white24,
-        borderRadius: BorderRadius.circular(100),
-        onTap: () {},
-        child: Column(
-          children: <Widget>[
-            Text("Menu", style: white10Medium),
-            Image.asset("images/menu.png")
-          ],
+    return Container(
+      height: 36,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          splashColor: Colors.white24,
+          highlightColor: Colors.white24,
+          borderRadius: BorderRadius.circular(100),
+          onTap: () {
+            print("menu tap");
+            final appState = AppState.of(context);
+            appState.rootNavigatorState.pushNamed(MenuDialog.routeName);
+          },
+          child: Column(
+            children: <Widget>[
+              Text("Menu", style: white10Medium),
+              Image.asset("assets/images/menu.png")
+            ],
+          ),
         ),
       ),
     );
