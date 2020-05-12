@@ -1,0 +1,36 @@
+# This is a sample build configuration for Other.
+# Check our guides at https://confluence.atlassian.com/x/5Q4SMw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: cirrusci/flutter:1.17.0-web
+
+pipelines:
+  default:
+    - step:
+        name: build
+        artifacts:
+          - build/web/**
+        script:
+          - pwd
+          - ls -al
+          - flutter config --enable-web
+          - flutter build web --release
+          - ls -al
+    - step: 
+        name: deploy
+        deployment: staging
+        trigger: manual
+        script:
+          - pwd
+          - ls -al
+          - pipe: atlassian/ftp-deploy:0.3.2
+            variables:
+              USER: $USER
+              SERVER: $SERVER
+              REMOTE_PATH: $REMOTE_PATH
+              LOCAL_PATH: $LOCAL_PATH
+              PASSWORD: $PASSWORD
+              # SSH_KEY: '<string>' # Optional.
+              # EXTRA_ARGS: '<string>' # Optional.
+              DEBUG: 'true'
