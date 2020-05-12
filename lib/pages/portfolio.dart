@@ -110,7 +110,7 @@ class ProductCard extends StatelessWidget {
                     children: <Widget>[
                       if (product.websiteUrl != null)
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
+                          padding: const EdgeInsets.only(bottom: 16),
                           child: FlatButton(
                               child: Text("View App Website",
                                   style: aDarkBlue20Medium),

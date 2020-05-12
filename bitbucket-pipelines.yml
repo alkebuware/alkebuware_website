@@ -12,18 +12,13 @@ pipelines:
         artifacts:
           - build/web/**
         script:
-          - pwd
-          - ls -al
           - flutter config --enable-web
           - flutter build web --release
-          - ls -al
     - step: 
         name: deploy
         deployment: staging
         trigger: manual
         script:
-          - pwd
-          - ls -al
           - pipe: atlassian/ftp-deploy:0.3.2
             variables:
               USER: $USER
@@ -31,6 +26,4 @@ pipelines:
               REMOTE_PATH: $REMOTE_PATH
               LOCAL_PATH: $LOCAL_PATH
               PASSWORD: $PASSWORD
-              # SSH_KEY: '<string>' # Optional.
-              # EXTRA_ARGS: '<string>' # Optional.
-              DEBUG: 'true'
+#              DEBUG: 'true'
