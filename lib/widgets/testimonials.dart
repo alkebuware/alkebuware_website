@@ -1,9 +1,11 @@
 import 'package:alkebuware_website/colors.dart';
-import 'package:alkebuware_website/main.dart';
+import 'package:alkebuware_website/models/testimonials.dart';
 import 'package:alkebuware_website/pages/tesimonial_dialog.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import 'services.dart';
 
 class Testimonials extends StatefulWidget {
   @override
@@ -55,8 +57,7 @@ class TestimonialCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final appState = AppState.of(context);
-        appState.rootNavigatorState.pushNamed(TestimonialDialog.routeName(
+        Navigator.pushNamed(context, TestimonialDialog.routeName(
             allTestimonials.indexOf(testimonial).toString()));
       },
       child: Card(
@@ -99,23 +100,7 @@ class TestimonialContent extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: testimonial.services.map((s) {
-                    switch (s) {
-                      case Service.uiDesign:
-                        return Image.asset("assets/images/ui-design.png");
-                        break;
-                      case Service.appDevelopment:
-                        return Image.asset("assets/images/app-development.png");
-                        break;
-                      case Service.webDevelopment:
-                        return Image.asset("assets/images/web-development.png");
-                        break;
-                    }
-                    return Container();
-                  }).toList(),
-                ),
+                ServiceIcons(services: testimonial.services,),
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: ServiceText(services: testimonial.services),
@@ -150,83 +135,4 @@ class TestimonialContent extends StatelessWidget {
       ],
     );
   }
-}
-
-class ServiceText extends StatelessWidget {
-  final List<Service> services;
-
-  const ServiceText({Key key, @required this.services}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    StringBuffer buffer = StringBuffer();
-    for (Service s in services) {
-      if (buffer.isNotEmpty && s == services.last) {
-        buffer.write(", and ");
-      } else if (buffer.isNotEmpty) {
-        buffer.write(", ");
-      }
-      switch (s) {
-        case Service.uiDesign:
-          buffer.write("UI Design");
-          break;
-        case Service.appDevelopment:
-          buffer.write("App Development");
-          break;
-        case Service.webDevelopment:
-          buffer.write("Web Development");
-          break;
-      }
-    }
-    return Text(
-      buffer.toString(),
-      style: serviceBlue12Bold,
-      textAlign: TextAlign.end,
-    );
-  }
-}
-
-final List<Testimonial> allTestimonials = const [
-  const Testimonial(
-      name: "Josh Y.",
-      services: [Service.appDevelopment],
-      assetName: "assets/images/josh-york.jpg",
-      company: "Dym.dev",
-      position: "Founder",
-      text: "Tariq did an excellent job developing an app for us. He was "
-          "professional and a great communicator. I would hire him with no "
-          "question for other projects."),
-  const Testimonial(
-      name: "Zakiyah A.",
-      services: [Service.uiDesign],
-      assetName: "assets/images/zakiyah-acosta.jpg",
-      company: "Zakiyah & Co.",
-      position: "Founder",
-      text: "I highly recommend Tariq if you're looking for a designer who "
-          "really knows what they're doing and doesn't mind including you "
-          "throughout the process so you'll know (and be able to see) what's going "
-          "on every step of the way."),
-];
-
-class Testimonial {
-  final String name;
-  final List<Service> services;
-  final String position;
-  final String company;
-  final String assetName;
-  final String text;
-
-  const Testimonial(
-      {@required this.name,
-      @required this.services,
-      @required this.position,
-      @required this.company,
-      @required this.assetName,
-      @required this.text});
-}
-
-enum Service {
-  uiDesign,
-  appDevelopment,
-  webDevelopment,
 }

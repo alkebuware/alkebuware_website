@@ -14,12 +14,13 @@ description: alkebuware.com web application
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.3.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   smooth_page_indicator: 0.1.5
+  url_launcher: 5.4.7
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,10 @@ flutter:
     - assets/images/web-development.png
     - assets/images/ui-design.png
     - assets/images/close-dark-blue.png
+    - assets/images/alosha-icon.png
+    - assets/images/boss-cuts-icon.png
+    - assets/images/companions-forever-icon.png
+    - assets/images/tce-shop-icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

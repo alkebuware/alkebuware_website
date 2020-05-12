@@ -36,8 +36,7 @@ class MenuDialog extends StatelessWidget {
               IconButton(
                   icon: Image.asset("assets/images/close.png"),
                   onPressed: () {
-                    final appState = AppState.of(context);
-                    appState.rootNavigatorState.pop();
+                    Navigator.pop(context);
                   })
             ],
           ),
@@ -85,9 +84,9 @@ class NavigationButton extends StatelessWidget {
           ? Colors.white12
           : Colors.transparent,
       onTap: () {
-        appState.rootNavigatorState.pop();
+        Navigator.pop(context);
         appState.appBarNavigatorState
-            .pushNamedAndRemoveUntil(routeName, (route) => false);
+            .pushNamed(routeName);
       },
     );
   }

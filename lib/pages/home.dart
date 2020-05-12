@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             color: aDarkBlue,
             width: getScreenWidth(context),
-            height: 200,
+            height: 700,
           ),
           Image.asset("assets/images/home-background.png",
               height: 1000, width: getScreenWidth(context), fit: BoxFit.cover),

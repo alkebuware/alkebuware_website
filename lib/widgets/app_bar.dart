@@ -60,10 +60,7 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
                 textStyle: aOrange14Medium,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: MenuButton(),
-            ),
+            MenuButton(),
           ]),
         ),
       ),
@@ -87,7 +84,7 @@ class MenuButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(100),
           onTap: () {
             final appState = AppState.of(context);
-            appState.rootNavigatorState.pushNamed(MenuDialog.routeName);
+            Navigator.pushNamed(context, MenuDialog.routeName);
           },
           child: Column(
             children: <Widget>[

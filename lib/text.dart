@@ -8,6 +8,13 @@ final TextStyle aDarkBlue16 = TextStyle(
   fontSize: 16,
 );
 
+final TextStyle aDarkBlue20Medium = TextStyle(
+  fontFamily: "Quicksand",
+  fontWeight: FontWeight.w500,
+  color: aDarkBlue,
+  fontSize: 20,
+);
+
 final TextStyle aLightBlue16 = TextStyle(
     fontFamily: "Quicksand",
     fontWeight: FontWeight.normal,

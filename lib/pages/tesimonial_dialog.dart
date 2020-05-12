@@ -1,5 +1,6 @@
 import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/main.dart';
+import 'package:alkebuware_website/models/testimonials.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/rounded_button.dart';
 import 'package:alkebuware_website/widgets/testimonials.dart';
@@ -11,7 +12,6 @@ class TestimonialDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appState = AppState.of(context);
     Testimonial testimonial;
     try {
       final routeName = ModalRoute.of(context).settings.name;
@@ -19,7 +19,7 @@ class TestimonialDialog extends StatelessWidget {
       testimonial = allTestimonials[index];
     } catch (e) {
       Future.delayed(Duration(), () {
-        appState.rootNavigatorState.pop();
+        Navigator.pop(context);
       });
       return Container();
     }
@@ -42,7 +42,7 @@ class TestimonialDialog extends StatelessWidget {
                   IconButton(
                       icon: Image.asset("assets/images/close-dark-blue.png"),
                       onPressed: () {
-                        appState.rootNavigatorState.pop();
+                        Navigator.pop(context);
                       })
                 ],
               ),
@@ -80,7 +80,7 @@ class NavigationButton extends StatelessWidget {
           ? Colors.white12
           : Colors.transparent,
       onTap: () {
-        appState.rootNavigatorState.pop();
+        Navigator.pop(context);
         appState.appBarNavigatorState
             .pushNamedAndRemoveUntil(routeName, (route) => false);
       },
