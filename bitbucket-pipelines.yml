@@ -9,6 +9,8 @@ pipelines:
   default:
     - step:
         name: build
+        artifacts:
+          - build/web/**
         script:
           - pwd
           - ls -al
