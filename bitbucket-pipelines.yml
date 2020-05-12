@@ -17,6 +17,8 @@ pipelines:
         deployment: staging
         trigger: manual
         script:
+          - echo pwd
+          - ls -al
           - pipe: atlassian/ftp-deploy:0.3.2
             variables:
               USER: $USER
@@ -26,4 +28,4 @@ pipelines:
               PASSWORD: $PASSWORD
               # SSH_KEY: '<string>' # Optional.
               # EXTRA_ARGS: '<string>' # Optional.
-              # DEBUG: '<boolean>' # Optional.
+              DEBUG: 'true'
