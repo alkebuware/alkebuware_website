@@ -14,6 +14,7 @@ pipelines:
     - step: 
         name: deploy
         deployment: staging
+        trigger: manual
         script:
           - pipe: atlassian/scp-deploy:0.3.11
             variables:
