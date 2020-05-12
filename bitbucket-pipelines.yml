@@ -10,6 +10,8 @@ pipelines:
     - step:
         name: build
         script:
+          - pwd
+          - ls -al
           - flutter config --enable-web
           - flutter build web --release
     - step: 
