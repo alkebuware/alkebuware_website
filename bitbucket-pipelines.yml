@@ -8,9 +8,9 @@ image: cirrusci/flutter:1.17.0-web
 pipelines:
   default:
     - step:
-        name: name
+        name: build
         script:
-          - echo "Everything is awesome!"
+          - flutter build web --release
     - step: 
         name: deploy
         deployment: staging
