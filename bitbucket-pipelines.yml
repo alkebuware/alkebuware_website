@@ -17,12 +17,13 @@ pipelines:
         deployment: staging
         trigger: manual
         script:
-          - pipe: atlassian/scp-deploy:0.3.11
+          - pipe: atlassian/ftp-deploy:0.3.2
             variables:
-              USER: '<string>'
-              SERVER: '<string>'
-              REMOTE_PATH: '<string>'
-              LOCAL_PATH: '<string>'
+              USER: $USER
+              SERVER: $SERVER
+              REMOTE_PATH: $REMOTE_PATH
+              LOCAL_PATH: $LOCAL_PATH
+              PASSWORD: $PASSWORD
               # SSH_KEY: '<string>' # Optional.
               # EXTRA_ARGS: '<string>' # Optional.
               # DEBUG: '<boolean>' # Optional.
