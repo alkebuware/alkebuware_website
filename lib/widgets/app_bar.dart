@@ -7,7 +7,7 @@ import 'package:alkebuware_website/text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'rouded_button.dart';
+import 'rounded_button.dart';
 
 class AAppBar extends StatelessWidget implements PreferredSizeWidget {
   final GlobalKey<NavigatorState> navigatorKey;
@@ -53,14 +53,17 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 16.0),
+              padding: const EdgeInsets.only(right: 32.0),
               child: RoundedButton(
                 backgroundColor: Colors.white,
                 text: "Let's Chat 😀",
-                textStyle: aOrange10Medium,
+                textStyle: aOrange14Medium,
               ),
             ),
-            MenuButton(),
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: MenuButton(),
+            ),
           ]),
         ),
       ),
@@ -75,7 +78,7 @@ class MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 36,
+      height: 42,
       child: Material(
         color: Colors.transparent,
         child: InkWell(
@@ -83,14 +86,13 @@ class MenuButton extends StatelessWidget {
           highlightColor: Colors.white24,
           borderRadius: BorderRadius.circular(100),
           onTap: () {
-            print("menu tap");
             final appState = AppState.of(context);
             appState.rootNavigatorState.pushNamed(MenuDialog.routeName);
           },
           child: Column(
             children: <Widget>[
-              Text("Menu", style: white10Medium),
-              Image.asset("assets/images/menu.png")
+              Text("Menu", style: white12Medium),
+              Image.asset("assets/images/menu.png", width: 42,)
             ],
           ),
         ),

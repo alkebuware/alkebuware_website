@@ -2,7 +2,7 @@ import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/text.dart';
-import 'package:alkebuware_website/widgets/rouded_button.dart';
+import 'package:alkebuware_website/widgets/rounded_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -1,8 +1,10 @@
 import 'package:alkebuware_website/pages/menu_dialog.dart';
+import 'package:alkebuware_website/pages/tesimonial_dialog.dart';
 import 'package:alkebuware_website/widgets/app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
 import 'pages/about.dart';
 import 'pages/hire_me.dart';
 import 'pages/home.dart';
@@ -46,10 +48,15 @@ class AppState extends State<App> {
           child: Navigator(
               key: _rootNavigatorKey,
               onGenerateRoute: (settings) {
-                print("root navigate to: ${settings.name}");
                 if (settings.name == MenuDialog.routeName) {
                   return MaterialPageRoute(
                       builder: (context) => MenuDialog(),
+                      settings: settings,
+                      fullscreenDialog: true);
+                } else
+                if (settings.name.startsWith(TestimonialDialog.routeName(""))) {
+                  return MaterialPageRoute(
+                      builder: (context) => TestimonialDialog(),
                       settings: settings,
                       fullscreenDialog: true);
                 } else {
@@ -57,10 +64,10 @@ class AppState extends State<App> {
                       builder: (context) {
                         return Scaffold(
                             appBar: AAppBar(navigatorKey: _appBarNavigatorKey),
+                            backgroundColor: backgroundGray,
                             body: Navigator(
                               key: _appBarNavigatorKey,
                               onGenerateRoute: (settings) {
-                                print("app bar navigate to: ${settings?.name}");
                                 currentRoute = settings?.name;
                                 return MaterialPageRoute(
                                     settings: settings,
