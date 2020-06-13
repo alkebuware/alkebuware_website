@@ -1,4 +1,5 @@
 import 'package:alkebuware_website/colors.dart';
+import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/models/testimonials.dart';
 import 'package:alkebuware_website/pages/tesimonial_dialog.dart';
 import 'package:alkebuware_website/text.dart';
@@ -57,7 +58,8 @@ class TestimonialCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, TestimonialDialog.routeName(
+        final appState = AppState.of(context);
+        appState.rootNavigatorState.pushNamed(TestimonialDialog.routeName(
             allTestimonials.indexOf(testimonial).toString()));
       },
       child: Card(
@@ -100,7 +102,9 @@ class TestimonialContent extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                ServiceIcons(services: testimonial.services,),
+                ServiceIcons(
+                  services: testimonial.services,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: ServiceText(services: testimonial.services),

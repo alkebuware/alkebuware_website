@@ -1,8 +1,12 @@
+import 'dart:async';
+
+import 'package:alkebuware_website/pages/hire_me_dialog.dart';
 import 'package:alkebuware_website/pages/menu_dialog.dart';
 import 'package:alkebuware_website/pages/tesimonial_dialog.dart';
 import 'package:alkebuware_website/widgets/app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sentry/sentry.dart';
 
 import 'colors.dart';
 import 'pages/about.dart';
@@ -13,7 +17,21 @@ import 'pages/portfolio_detail.dart';
 import 'pages/resume.dart';
 import 'pages/services.dart';
 
-void main() => runApp(App());
+final SentryClient sentry = SentryClient(
+    dsn:
+        "https://43456dfe4c6e4ac09723030b960588c0@o365045.ingest.sentry.io/5275606");
+
+void main() => runZoned(() => runApp(App()), onError: (error, stackTrace) {
+      try {
+        sentry.captureException(exception: error, stackTrace: stackTrace);
+        print(error);
+        print(stackTrace);
+      } catch (e) {
+        print("Sending report to sentry.io failed: $e");
+        print(error);
+        print(stackTrace);
+      }
+    });
 
 class App extends StatefulWidget {
   @override
@@ -22,6 +40,7 @@ class App extends StatefulWidget {
 
 class AppState extends State<App> {
   GlobalKey<NavigatorState> _appBarNavigatorKey;
+  GlobalKey<NavigatorState> _rootNavigatorKey;
   String currentRoute;
 
   static AppState of(BuildContext context) {
@@ -30,16 +49,20 @@ class AppState extends State<App> {
 
   NavigatorState get appBarNavigatorState => _appBarNavigatorKey.currentState;
 
+  NavigatorState get rootNavigatorState => _rootNavigatorKey.currentState;
+
   @override
   void initState() {
     super.initState();
     _appBarNavigatorKey = GlobalKey<NavigatorState>();
+    _rootNavigatorKey = GlobalKey<NavigatorState>();
   }
 
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
       title: 'Alkebuware - Let\'s Build Something Great',
+      navigatorKey: _rootNavigatorKey,
       onGenerateRoute: (settings) {
         final name = settings.name;
         if (name == MenuDialog.routeName) {
@@ -47,7 +70,12 @@ class AppState extends State<App> {
               builder: (_) => Material(child: MenuDialog()));
         } else if (name.startsWith(TestimonialDialog.routeName(""))) {
           return MaterialPageRoute(
-              builder: (_) => Material(child: TestimonialDialog()));
+              builder: (_) => Material(child: TestimonialDialog()),
+              settings: settings);
+        } else if (name == HireMeDialog.routeName) {
+          return MaterialPageRoute(
+              builder: (_) => Material(child: HireMeDialog()),
+              settings: settings);
         } else {
           return null;
         }

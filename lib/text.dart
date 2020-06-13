@@ -63,6 +63,12 @@ final TextStyle white12Medium = TextStyle(
     color: Colors.white,
     fontSize: 12);
 
+final TextStyle white16Medium = TextStyle(
+    fontFamily: "Quicksand",
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+    fontSize: 16);
+
 final TextStyle white20Medium = TextStyle(
     fontFamily: "Quicksand",
     fontWeight: FontWeight.w500,
@@ -86,6 +92,18 @@ final TextStyle serviceBlue12Bold = TextStyle(
     fontWeight: FontWeight.w700,
     color: serviceBlue,
     fontSize: 12);
+
+final TextStyle titleAOrange24 = TextStyle(
+    fontFamily: "Asap",
+    fontWeight: FontWeight.w700,
+    color: aOrange,
+    fontSize: 24);
+
+final TextStyle titleWhite16 = TextStyle(
+    fontFamily: "Asap",
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+    fontSize: 16);
 
 final TextStyle titleWhite24 = TextStyle(
     fontFamily: "Asap",

@@ -1,5 +1,6 @@
 import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/dimensions.dart';
+import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/footer.dart';
 import 'package:alkebuware_website/widgets/page_view.dart';
@@ -8,6 +9,8 @@ import 'package:alkebuware_website/widgets/squared_button.dart';
 import 'package:alkebuware_website/widgets/testimonials.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import 'hire_me_dialog.dart';
 
 class HomePage extends StatefulWidget {
   static final String routeName = "/";
@@ -79,8 +82,11 @@ class _HomePageState extends State<HomePage> {
                   text: "HIRE ME! 😁",
                   textStyle: white20Medium,
                   backgroundColor: aOrange,
-                  // TODO: implement onTap when hire-me dialog ready
-                  onTap: () {},
+                  onTap: () {
+                    final appState = AppState.of(context);
+                    appState.rootNavigatorState
+                        .pushNamed(HireMeDialog.routeName);
+                  },
                 ),
               ),
               Padding(

@@ -18,6 +18,7 @@ class TestimonialDialog extends StatelessWidget {
       final index = int.tryParse(routeName.split("/").last);
       testimonial = allTestimonials[index];
     } catch (e) {
+      print(e);
       Future.delayed(Duration(), () {
         Navigator.pop(context);
       });

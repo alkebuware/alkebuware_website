@@ -7,13 +7,15 @@ class SquaredButton extends StatelessWidget {
   final Color backgroundColor;
   final VoidCallback onTap;
   final EdgeInsets padding;
+  final Widget child;
 
   const SquaredButton(
       {Key key,
       this.text,
       @required this.textStyle,
-      this.backgroundColor,
+      @required this.backgroundColor,
       this.onTap,
+        this.child,
       this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 24)})
       : super(key: key);
 
@@ -31,7 +33,7 @@ class SquaredButton extends StatelessWidget {
         onTap: onTap ?? () {},
         child: Padding(
           padding: padding,
-          child: Text(text, style: textStyle),
+          child: child ?? Text(text, style: textStyle),
         ),
       ),
     );
