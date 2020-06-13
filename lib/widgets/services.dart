@@ -4,13 +4,18 @@ import 'package:flutter/material.dart';
 
 class ServiceIcons extends StatelessWidget {
   final List<Service> services;
+  final MainAxisAlignment mainAxisAlignment;
 
-  const ServiceIcons({Key key, @required this.services}) : super(key: key);
+  const ServiceIcons(
+      {Key key,
+      @required this.services,
+      this.mainAxisAlignment = MainAxisAlignment.end})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: mainAxisAlignment,
       children: services.map((s) {
         final bool isMiddle = services.last != s && services.first != s;
         Image image;

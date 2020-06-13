@@ -8,8 +8,8 @@ import 'colors.dart';
 import 'pages/about.dart';
 import 'pages/hire_me.dart';
 import 'pages/home.dart';
-import 'pages/portfolio-detail.dart';
 import 'pages/portfolio.dart';
+import 'pages/portfolio_detail.dart';
 import 'pages/resume.dart';
 import 'pages/services.dart';
 

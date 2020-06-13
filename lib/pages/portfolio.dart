@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'portfolio-detail.dart';
+import 'portfolio_detail.dart';
 
 class PortfolioPage extends StatelessWidget {
   static final String routeName = "/portfolio";

@@ -2,12 +2,12 @@ import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/footer.dart';
+import 'package:alkebuware_website/widgets/page_view.dart';
 import 'package:alkebuware_website/widgets/rounded_button.dart';
 import 'package:alkebuware_website/widgets/squared_button.dart';
 import 'package:alkebuware_website/widgets/testimonials.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {
   static final String routeName = "/";
@@ -17,12 +17,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  PageController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = PageController();
   }
 
   @override
@@ -68,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                 child: Text(
                     "Together you and I will build a compelling app that'll keep your customers coming back for more.",
                     style: white24,
@@ -111,25 +109,11 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Container(
-                constraints: BoxConstraints(maxHeight: 600),
-                child: PageView(
-                  controller: _controller,
-                  children: <Widget>[
-                    Image.asset("assets/images/boss-cuts-home.png"),
-                    Image.asset("assets/images/tceshop-product-detail.png"),
-                    Image.asset("assets/images/alosha-profile.png"),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: SmoothPageIndicator(
-                  controller: _controller,
-                  count: 3,
-                  effect: ExpandingDotsEffect(activeDotColor: aLightBlue),
-                ),
-              ),
+              ProductPageView(assetPaths: [
+                "assets/images/boss-cuts-home.png",
+                "assets/images/tceshop-product-detail.png",
+                "assets/images/alosha-profile.png"
+              ]),
               Padding(
                   padding: const EdgeInsets.only(top: 64),
                   child: Column(

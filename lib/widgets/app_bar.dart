@@ -83,7 +83,6 @@ class MenuButton extends StatelessWidget {
           highlightColor: Colors.white24,
           borderRadius: BorderRadius.circular(100),
           onTap: () {
-            final appState = AppState.of(context);
             Navigator.pushNamed(context, MenuDialog.routeName);
           },
           child: Column(
