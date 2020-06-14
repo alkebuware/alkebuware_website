@@ -50,6 +50,7 @@ class _SendButtonState extends State<SendButton> {
             print("formData: ${widget.formData()}");
             final response = await (MultipartRequest(
                     "POST", Uri.parse("https://formspree.io/mzbjgkao"))
+                  ..followRedirects = false
                   ..fields.addAll(widget.formData()))
                 .send();
             if (response.statusCode == 200 || response.statusCode == 302) {
@@ -61,9 +62,14 @@ class _SendButtonState extends State<SendButton> {
               throw ("${response.statusCode} ${response.request.url}");
             }
           } catch (e) {
-            _onError();
-            setState(() => _inProgress = false);
-            rethrow;
+            if (e.toString().contains("XMLHttpRequest error")) {
+              widget.onSuccess();
+              setState(() => _inProgress = false);
+            } else {
+              _onError();
+              setState(() => _inProgress = false);
+              rethrow;
+            }
           }
         }
       },

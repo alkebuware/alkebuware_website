@@ -33,10 +33,14 @@
     var foundPane = false;
     var foundHost = false;
     var animationComplete = false;
+    setTimeout(function(){
+        print("setTimeout");
+        showSite(true);
+    }, 20000);
     const targetNode  = document.getElementsByTagName("BODY")[0];
 
-    function showSite(){
-      if(foundPane === true && foundHost === true && animationComplete === true){
+    function showSite(force){
+      if(force === true || (foundPane === true && foundHost === true && animationComplete === true)){
         const loadingContainer = document.getElementById('loading-container');
         loadingContainer.style.animation = '1s ease-out container forwards';
       }
