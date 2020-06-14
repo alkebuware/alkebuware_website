@@ -1,6 +1,7 @@
 import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/main.dart';
+import 'package:alkebuware_website/pages/general_inquiry_dialog.dart';
 import 'package:alkebuware_website/pages/home.dart';
 import 'package:alkebuware_website/pages/menu_dialog.dart';
 import 'package:alkebuware_website/text.dart';
@@ -58,6 +59,11 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
                 backgroundColor: Colors.white,
                 text: "Let's Chat 😀",
                 textStyle: aOrange14Medium,
+                onTap: () {
+                  final appState = AppState.of(context);
+                  appState.rootNavigatorState
+                      .pushNamed(GeneralInquiryDialog.routeName);
+                },
               ),
             ),
             MenuButton(),
@@ -88,7 +94,10 @@ class MenuButton extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text("Menu", style: white12Medium),
-              Image.asset("assets/images/menu.png", width: 42,)
+              Image.asset(
+                "assets/images/menu.png",
+                width: 42,
+              )
             ],
           ),
         ),

@@ -18,7 +18,6 @@ class ADialog extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(
           top: 16 + getStatusBarHeight(context),
-          bottom: 16,
           left: 16,
           right: 16),
       height: getScreenHeight(context),

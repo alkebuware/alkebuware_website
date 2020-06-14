@@ -1,5 +1,4 @@
 import 'package:alkebuware_website/widgets/dialog.dart';
-import 'package:alkebuware_website/widgets/dropdown_form_field.dart';
 import 'package:alkebuware_website/widgets/send_button.dart';
 import 'package:alkebuware_website/widgets/send_success.dart';
 import 'package:alkebuware_website/widgets/text_form_field.dart';
@@ -7,25 +6,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
 
-class HireMeDialog extends StatefulWidget {
-  static const String routeName = "/hire-an-expert";
+class GeneralInquiryDialog extends StatefulWidget {
+  static const String routeName = "/general-inquiry";
 
   @override
-  _HireMeDialogState createState() => _HireMeDialogState();
+  _GeneralInquiryDialogState createState() => _GeneralInquiryDialogState();
 }
 
-class _HireMeDialogState extends State<HireMeDialog> {
+class _GeneralInquiryDialogState extends State<GeneralInquiryDialog> {
   final _formKey = GlobalKey<FormState>();
   String _name;
   String _email;
-  BudgetRange _budgetRange;
-  String _description;
+  String _inquiry;
   bool _sendSucceeded = false;
 
   @override
   Widget build(BuildContext context) {
     return ADialog(
-      title: "Hire an Expert",
+      title: "General Inquiry",
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Form(
@@ -60,22 +58,8 @@ class _HireMeDialogState extends State<HireMeDialog> {
                       _email = value;
                     },
                   ),
-                  ADropdownFormField(
-                    labelText: "Budget Range*",
-                    onSaved: (range) {
-                      _budgetRange = range;
-                    },
-                    validator: (value) {
-                      if (value == null) {
-                        return "Please select a budget range";
-                      }
-                      return null;
-                    },
-                    stringify: budgetRangeToString,
-                    items: BudgetRange.values,
-                  ),
                   ATextFormField(
-                    labelText: "Project Description*",
+                    labelText: "Inquiry*",
                     minLines: 3,
                     maxLines: 5,
                     validator: (value) {
@@ -85,7 +69,7 @@ class _HireMeDialogState extends State<HireMeDialog> {
                       return null;
                     },
                     onSaved: (value) {
-                      _description = value;
+                      _inquiry = value;
                     },
                   ),
                   Padding(
@@ -101,8 +85,7 @@ class _HireMeDialogState extends State<HireMeDialog> {
                           formData: () => {
                             "name": _name,
                             "email": _email,
-                            "budgetRange": budgetRangeToString(_budgetRange),
-                            "description": _description,
+                            "inquiry": _inquiry,
                           },
                         )
                       ],
@@ -113,25 +96,4 @@ class _HireMeDialogState extends State<HireMeDialog> {
       ),
     );
   }
-}
-
-String budgetRangeToString(BudgetRange range) {
-  switch (range) {
-    case BudgetRange.fiveKToTenK:
-      return "\$5,000 - \$10,000";
-      break;
-    case BudgetRange.tenKToTwentyK:
-      return "\$10,000 - \$20,000";
-      break;
-    case BudgetRange.twentyKPlus:
-      return "\$20,000+";
-      break;
-  }
-  return null;
-}
-
-enum BudgetRange {
-  fiveKToTenK,
-  tenKToTwentyK,
-  twentyKPlus,
 }

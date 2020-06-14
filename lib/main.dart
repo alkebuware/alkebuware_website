@@ -10,6 +10,7 @@ import 'package:sentry/sentry.dart';
 
 import 'colors.dart';
 import 'pages/about.dart';
+import 'pages/general_inquiry_dialog.dart';
 import 'pages/hire_me.dart';
 import 'pages/home.dart';
 import 'pages/portfolio.dart';
@@ -75,6 +76,10 @@ class AppState extends State<App> {
         } else if (name == HireMeDialog.routeName) {
           return MaterialPageRoute(
               builder: (_) => Material(child: HireMeDialog()),
+              settings: settings);
+        } else if (name == GeneralInquiryDialog.routeName) {
+          return MaterialPageRoute(
+              builder: (_) => Material(child: GeneralInquiryDialog()),
               settings: settings);
         } else {
           return null;

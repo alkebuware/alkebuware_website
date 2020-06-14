@@ -1,5 +1,6 @@
 import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/main.dart';
+import 'package:alkebuware_website/pages/general_inquiry_dialog.dart';
 import 'package:alkebuware_website/pages/hire_me_dialog.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/footer.dart';
@@ -35,7 +36,10 @@ class HireMePage extends StatelessWidget {
             "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem "
             "ipsum Lorem ipsum",
         callToAction: "Send Inquiry",
-        onTap: () {},
+        onTap: () {
+          final appState = AppState.of(context);
+          appState.rootNavigatorState.pushNamed(GeneralInquiryDialog.routeName);
+        },
         backgroundIconPath: "assets/images/inquiry.png",
       ),
       Testimonials(),

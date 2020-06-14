@@ -19,7 +19,7 @@ class SendSuccess extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
-                  boxShadow: kElevationToShadow[4],
+                  boxShadow: kElevationToShadow[6],
                 ),
                 child: Image.asset("assets/images/send-large-blue.png")),
           ),
