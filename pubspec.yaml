@@ -87,6 +87,25 @@ flutter:
     - assets/images/inquiry.png
     - assets/images/send.png
     - assets/images/send-large-blue.png
+    - assets/images/haqq-app-home.png
+    - assets/images/haqq-app-loyalty.png
+    - assets/images/haqq-app-search.png
+    - assets/images/haqq-loyalty-analytics.png
+    - assets/images/haqq-loyalty-customer.png
+    - assets/images/haqq-loyalty-home.png
+    - assets/images/angulardart-badge.png
+    - assets/images/angulardart-badge.png
+    - assets/images/aqueduct-badge.png
+    - assets/images/css3-badge.png
+    - assets/images/dart-badge.png
+    - assets/images/firebase-badge.png
+    - assets/images/flutter-badge.png
+    - assets/images/gcp-badge.png
+    - assets/images/html5-badge.png
+    - assets/images/js-badge.png
+    - assets/images/postgres-badge.png
+    - assets/images/download.png
+    - assets/images/linkedin.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
