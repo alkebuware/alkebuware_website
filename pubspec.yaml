@@ -109,6 +109,7 @@ flutter:
     - assets/images/ui-design2.png
     - assets/images/consulting.png
     - assets/images/development.png
+    - assets/images/professional.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
