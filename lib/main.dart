@@ -17,6 +17,7 @@ import 'pages/portfolio.dart';
 import 'pages/portfolio_detail.dart';
 import 'pages/resume.dart';
 import 'pages/services.dart';
+import 'pages/services_inquiry_dialog.dart';
 
 final SentryClient sentry = SentryClient(
     dsn:
@@ -80,6 +81,10 @@ class AppState extends State<App> {
         } else if (name == GeneralInquiryDialog.routeName) {
           return MaterialPageRoute(
               builder: (_) => Material(child: GeneralInquiryDialog()),
+              settings: settings);
+        } else if (name == ServicesInquiryDialog.routeName) {
+          return MaterialPageRoute(
+              builder: (_) => Material(child: ServicesInquiryDialog()),
               settings: settings);
         } else {
           return null;

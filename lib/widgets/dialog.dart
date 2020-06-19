@@ -17,9 +17,7 @@ class ADialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-          top: 16 + getStatusBarHeight(context),
-          left: 16,
-          right: 16),
+          top: 16 + getStatusBarHeight(context), left: 16, right: 16),
       height: getScreenHeight(context),
       width: getScreenWidth(context),
       decoration: BoxDecoration(gradient: lightBlueGradient),
@@ -28,7 +26,16 @@ class ADialog extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(title, style: titleWhite36Bold),
+              Container(
+                constraints:
+                    BoxConstraints(maxWidth: getScreenWidth(context) - 80),
+                child: Text(
+                  title,
+                  style: titleWhite36Bold,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
+              ),
               IconButton(
                   icon: Image.asset("assets/images/close.png"),
                   onPressed: () {

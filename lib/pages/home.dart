@@ -1,6 +1,7 @@
 import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/main.dart';
+import 'package:alkebuware_website/pages/portfolio.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/footer.dart';
 import 'package:alkebuware_website/widgets/page_view.dart';
@@ -10,6 +11,7 @@ import 'package:alkebuware_website/widgets/testimonials.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'hire_me.dart';
 import 'hire_me_dialog.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +22,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                 child: SquaredButton(
                   text: "HIRE ME! 😁",
                   textStyle: white20Medium,
@@ -102,8 +103,14 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     Text("My Work", style: titleADarkBlue24Bold),
                     InkWell(
-                      // TODO: Navigate to portfolio when ready
-                      onTap: () {},
+                      onTap: () {
+                        final appBarNavigationState =
+                            AppState
+                                .of(context)
+                                .appBarNavigatorState;
+                        appBarNavigationState
+                            .pushNamed(PortfolioPage.routeName);
+                      },
                       child: Row(children: [
                         Text("View portfolio", style: aLightBlue16),
                         Icon(
@@ -133,6 +140,14 @@ class _HomePageState extends State<HomePage> {
                             Text("My Clients", style: titleADarkBlue24Bold),
                             RoundedButton(
                                 backgroundColor: aOrange,
+                                onTap: () {
+                                  final appBarNavigationState =
+                                      AppState
+                                          .of(context)
+                                          .appBarNavigatorState;
+                                  appBarNavigationState
+                                      .pushNamed(HireMePage.routeName);
+                                },
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
                                       vertical: 4, horizontal: 16),
