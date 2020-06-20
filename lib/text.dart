@@ -52,6 +52,12 @@ final TextStyle white16 = TextStyle(
     color: Colors.white,
     fontSize: 16);
 
+final TextStyle white5416 = TextStyle(
+    fontFamily: "Quicksand",
+    fontWeight: FontWeight.normal,
+    color: Colors.white.withOpacity(.54),
+    fontSize: 16);
+
 final TextStyle white24 = TextStyle(
     fontFamily: "Quicksand",
     fontWeight: FontWeight.normal,
