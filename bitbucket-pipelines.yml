@@ -3,7 +3,7 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: cirrusci/flutter:1.17.0-web
+image: cirrusci/flutter:1.19.0-4.1.pre
 
 pipelines:
   default:
