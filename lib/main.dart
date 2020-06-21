@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:alkebuware_website/pages/hire_me_dialog.dart';
 import 'package:alkebuware_website/pages/menu_dialog.dart';
-import 'package:alkebuware_website/pages/tesimonial_dialog.dart';
 import 'package:alkebuware_website/widgets/app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -70,10 +69,6 @@ class AppState extends State<App> {
         if (name == MenuDialog.routeName) {
           return MaterialPageRoute(
               builder: (_) => Material(child: MenuDialog()));
-        } else if (name.startsWith(TestimonialDialog.routeName(""))) {
-          return MaterialPageRoute(
-              builder: (_) => Material(child: TestimonialDialog()),
-              settings: settings);
         } else if (name == HireMeDialog.routeName) {
           return MaterialPageRoute(
               builder: (_) => Material(child: HireMeDialog()),

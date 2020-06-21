@@ -30,10 +30,5 @@ class AFab extends StatelessWidget {
         ),
       ),
     );
-    return FloatingActionButton(
-      onPressed: onPressed,
-      child: child,
-      backgroundColor: backgroundColor,
-    );
   }
 }

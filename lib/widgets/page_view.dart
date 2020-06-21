@@ -3,18 +3,49 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class ProductPageView extends StatefulWidget {
+class ProductPageView extends StatelessWidget {
   final List<String> assetPaths;
 
   const ProductPageView({Key key, this.assetPaths}) : super(key: key);
 
   @override
-  _ProductPageViewState createState() => _ProductPageViewState();
+  Widget build(BuildContext context) {
+    return ScreenTypeLayout(
+        mobile: _Mobile(assetPaths: assetPaths),
+        tablet: _Mobile(assetPaths: assetPaths),
+        desktop: _Desktop(assetPaths: assetPaths));
+  }
 }
 
-class _ProductPageViewState extends State<ProductPageView> {
+class _Desktop extends StatelessWidget {
+  final List<String> assetPaths;
+
+  const _Desktop({Key key, this.assetPaths}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        for (String path in assetPaths) Image.asset(path, width: 250)
+      ],
+    );
+  }
+}
+
+class _Mobile extends StatefulWidget {
+  final List<String> assetPaths;
+
+  const _Mobile({Key key, this.assetPaths}) : super(key: key);
+
+  @override
+  __MobileState createState() => __MobileState();
+}
+
+class __MobileState extends State<_Mobile> {
   PageController _controller;
 
   @override

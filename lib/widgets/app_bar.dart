@@ -27,7 +27,10 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
       mobile: _MobileAAppbar(
         navigatorKey: navigatorKey,
       ),
-      tablet: _TabletAAppbar(
+      tablet: _MobileAAppbar(
+        navigatorKey: navigatorKey,
+      ),
+      desktop: _TabletAAppbar(
         navigatorKey: navigatorKey,
       ),
     );

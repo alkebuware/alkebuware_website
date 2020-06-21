@@ -1,19 +1,41 @@
 import 'package:alkebuware_website/colors.dart';
-import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/models/testimonials.dart';
-import 'package:alkebuware_website/pages/tesimonial_dialog.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'services.dart';
 
-class Testimonials extends StatefulWidget {
+class Testimonials extends StatelessWidget {
   @override
-  _TestimonialsState createState() => _TestimonialsState();
+  Widget build(BuildContext context) {
+    return ScreenTypeLayout(
+      mobile: _Mobile(),
+      tablet: _Mobile(),
+      desktop: _Desktop(),
+    );
+  }
 }
 
-class _TestimonialsState extends State<Testimonials> {
+class _Desktop extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: allTestimonials
+          .map((t) => Flexible(child: TestimonialCard(testimonial: t)))
+          .toList(),
+    );
+  }
+}
+
+class _Mobile extends StatefulWidget {
+  @override
+  __MobileState createState() => __MobileState();
+}
+
+class __MobileState extends State<_Mobile> {
   PageController _controller;
 
   @override
@@ -27,7 +49,7 @@ class _TestimonialsState extends State<Testimonials> {
     return Column(
       children: <Widget>[
         Container(
-          constraints: BoxConstraints(maxHeight: 310),
+          constraints: BoxConstraints(maxHeight: 350, maxWidth: 500),
           child: PageView(
             controller: _controller,
             children: allTestimonials
@@ -56,19 +78,12 @@ class TestimonialCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        final appState = AppState.of(context);
-        appState.rootNavigatorState.pushNamed(TestimonialDialog.routeName(
-            allTestimonials.indexOf(testimonial).toString()));
-      },
-      child: Card(
-        elevation: 4,
-        margin: EdgeInsets.all(16),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: TestimonialContent(testimonial: testimonial),
-        ),
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.all(16),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: TestimonialContent(testimonial: testimonial),
       ),
     );
   }
@@ -76,10 +91,8 @@ class TestimonialCard extends StatelessWidget {
 
 class TestimonialContent extends StatelessWidget {
   final Testimonial testimonial;
-  final int maxLines;
 
-  const TestimonialContent({Key key, this.testimonial, this.maxLines = 4})
-      : super(key: key);
+  const TestimonialContent({Key key, this.testimonial}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -119,8 +132,6 @@ class TestimonialContent extends StatelessWidget {
             testimonial.text,
             style: aDarkBlue16,
             textAlign: TextAlign.left,
-            overflow: TextOverflow.ellipsis,
-            maxLines: maxLines,
           ),
         ),
         Padding(
