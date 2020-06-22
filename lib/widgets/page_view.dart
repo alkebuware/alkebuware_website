@@ -5,6 +5,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ProductPageView extends StatelessWidget {
   final List<String> assetPaths;
@@ -27,11 +28,21 @@ class _Desktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        for (String path in assetPaths) Image.asset(path, width: 250)
-      ],
+    return Container(
+      width: 1024,
+      child: Wrap(
+        spacing: 32,
+        runSpacing: 32,
+        alignment: WrapAlignment.spaceBetween,
+        children: <Widget>[
+          for (String path in assetPaths)
+            FadeInImage(
+              image: AssetImage(path),
+              width: 250,
+              placeholder: MemoryImage(kTransparentImage),
+            )
+        ],
+      ),
     );
   }
 }

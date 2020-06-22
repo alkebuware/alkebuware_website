@@ -28,7 +28,7 @@ class _PortfolioDetailPageState extends State<PortfolioDetailPage> {
 
     final product = allProducts[id];
 
-    return ListView(
+    return Column(
       children: <Widget>[
         AContainer(
             child:

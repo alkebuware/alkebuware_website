@@ -12,13 +12,21 @@ class AContainer extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Container(
-            width: getScreenWidth(context),
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: kElevationToShadow[4],
             ),
-            child: child),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Container(
+                      constraints: BoxConstraints(maxWidth: 1024),
+                      child: child),
+                ),
+              ],
+            )),
       ],
     );
   }

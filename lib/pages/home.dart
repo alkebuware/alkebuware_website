@@ -24,7 +24,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _controller = ScrollController();
 
   @override
   void initState() {
@@ -33,145 +32,97 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return AScrollBar(
-      controller: _controller,
-      child: SingleChildScrollView(
-        controller: _controller,
-        child: Stack(
-          children: [
-            ScreenTypeLayout(
-                desktop: Image.asset("assets/images/home-background.png",
-                    width: getScreenWidth(context), fit: BoxFit.fitWidth),
-                mobile: Image.asset(
-                  "assets/images/home-background.png",
-                  height: 1000,
-                  width: getScreenWidth(context),
-                  fit: BoxFit.cover,
-                )),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: NeverScrollableScrollPhysics(),
-              child: ScreenTypeLayout(
-                desktop: Padding(
-                  padding: const EdgeInsets.only(left: 400),
-                  child: Container(
-                      width: 2000,
-                      height: 2000,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: RadialGradient(
-                          colors: [Color(0x00FFFFFF), Color(0x0DFFFFFF)],
-                          stops: [0, 1],
-                        ),
-                      )),
-                ),
-                mobile: Padding(
-                  padding: const EdgeInsets.only(top: 64),
-                  child: Container(
-                      width: 1000,
-                      height: 1000,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: RadialGradient(
-                          colors: [Color(0x00FFFFFF), Color(0x0DFFFFFF)],
-                          stops: [0, 1],
-                        ),
-                      )),
-                ),
-              ),
+    return Stack(
+      children: [
+        ScreenTypeLayout(
+            desktop: Image.asset("assets/images/home-background.png",
+                width: getScreenWidth(context), fit: BoxFit.fitWidth),
+            mobile: Image.asset(
+              "assets/images/home-background.png",
+              height: 1000,
+              width: getScreenWidth(context),
+              fit: BoxFit.cover,
+            )),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: NeverScrollableScrollPhysics(),
+          child: ScreenTypeLayout(
+            desktop: Padding(
+              padding: const EdgeInsets.only(left: 400),
+              child: Container(
+                  width: 2000,
+                  height: 2000,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [Color(0x00FFFFFF), Color(0x0DFFFFFF)],
+                      stops: [0, 1],
+                    ),
+                  )),
             ),
-            Column(
-              children: <Widget>[
-                Container(
-                    constraints: BoxConstraints(maxWidth: 1024),
-                    child: Column(children: [
-                      ScreenTypeLayout(
-                        desktop: Padding(
-                          padding: const EdgeInsets.only(top: 100.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Flexible(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 32,
-                                          left: 16,
-                                          right: 16,
-                                          bottom: 16),
-                                      child: Text(
-                                        "Let's build something amazing",
-                                        style: titleWhite42Bold,
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 32),
-                                      child: Text(
-                                          "Together you and I will build a compelling app that'll keep your customers coming back for more.",
-                                          style: white24,
-                                          textAlign: TextAlign.left),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 64),
-                                      child: SquaredButton(
-                                        text: "HIRE ME! 😁",
-                                        textStyle: white20Medium,
-                                        backgroundColor: aOrange,
-                                        onTap: () {
-                                          final appState = AppState.of(context);
-                                          appState.rootNavigatorState.pushNamed(
-                                              HireMeDialog.routeName);
-                                        },
-                                      ),
-                                    ),
-                                  ],
+            mobile: Padding(
+              padding: const EdgeInsets.only(top: 64),
+              child: Container(
+                  width: 1000,
+                  height: 1000,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [Color(0x00FFFFFF), Color(0x0DFFFFFF)],
+                      stops: [0, 1],
+                    ),
+                  )),
+            ),
+          ),
+        ),
+        Column(
+          children: <Widget>[
+            Container(
+                constraints: BoxConstraints(maxWidth: 1024),
+                child: Column(children: [
+                  ScreenTypeLayout(
+                    desktop: Padding(
+                      padding: const EdgeInsets.only(top: 100.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Flexible(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 32, left: 16, right: 16, bottom: 16),
+                                  child: Text(
+                                    "Let's build something amazing",
+                                    style: titleWhite42Bold,
+                                    textAlign: TextAlign.left,
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 32),
-                                child: Image.asset(
-                                    "assets/images/alosha-discover.png"),
-                              ),
-                            ],
-                          ),
-                        ),
-                        mobile: Column(children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 32, left: 16, right: 16, bottom: 16),
-                            child: Text(
-                              "Let's build something amazing",
-                              style: titleWhite42Bold,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 32),
-                            child: Text(
-                                "Together you and I will build a compelling app that'll keep your customers coming back for more.",
-                                style: white24,
-                                textAlign: TextAlign.center),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 32),
-                            child: SquaredButton(
-                              text: "HIRE ME! 😁",
-                              textStyle: white20Medium,
-                              backgroundColor: aOrange,
-                              onTap: () {
-                                final appState = AppState.of(context);
-                                appState.rootNavigatorState
-                                    .pushNamed(HireMeDialog.routeName);
-                              },
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 32),
+                                  child: Text(
+                                      "Together you and I will build a compelling app that'll keep your customers coming back for more.",
+                                      style: white24,
+                                      textAlign: TextAlign.left),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 64),
+                                  child: SquaredButton(
+                                    text: "HIRE ME! 😁",
+                                    textStyle: white20Medium,
+                                    backgroundColor: aOrange,
+                                    onTap: () {
+                                      final appState = AppState.of(context);
+                                      appState.rootNavigatorState
+                                          .pushNamed(HireMeDialog.routeName);
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Padding(
@@ -180,100 +131,136 @@ class _HomePageState extends State<HomePage> {
                             child: Image.asset(
                                 "assets/images/alosha-discover.png"),
                           ),
-                        ]),
+                        ],
                       ),
+                    ),
+                    mobile: Column(children: [
                       Padding(
-                        padding: EdgeInsets.only(
-                            left: 16,
-                            right: 16,
-                            top: getValueForScreenType(
-                                context: context,
-                                mobile: 32,
-                                tablet: 32,
-                                desktop: getScreenWidth(context) * .2),
-                            bottom: 32),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text("My Work", style: titleADarkBlue24Bold),
-                            InkWell(
-                              onTap: () {
-                                final appBarNavigationState =
-                                    AppState.of(context).appBarNavigatorState;
-                                appBarNavigationState
-                                    .pushNamed(PortfolioPage.routeName);
-                              },
-                              child: Row(children: [
-                                Text("View portfolio", style: aLightBlue16),
-                                Icon(
-                                  Icons.chevron_right,
-                                  color: aLightBlue,
-                                )
-                              ]),
-                            )
-                          ],
+                        padding: const EdgeInsets.only(
+                            top: 32, left: 16, right: 16, bottom: 16),
+                        child: Text(
+                          "Let's build something amazing",
+                          style: titleWhite42Bold,
+                          textAlign: TextAlign.center,
                         ),
                       ),
-                      ProductPageView(assetPaths: [
-                        "assets/images/boss-cuts-home.png",
-                        "assets/images/tceshop-product-detail.png",
-                        "assets/images/alosha-profile.png"
-                      ]),
                       Padding(
-                          padding: const EdgeInsets.only(top: 64),
-                          child: Column(
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    bottom: 16, left: 16, right: 16),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("My Clients",
-                                        style: titleADarkBlue24Bold),
-                                    RoundedButton(
-                                        backgroundColor: aOrange,
-                                        onTap: () {
-                                          final appBarNavigationState =
-                                              AppState.of(context)
-                                                  .appBarNavigatorState;
-                                          appBarNavigationState
-                                              .pushNamed(HireMePage.routeName);
-                                        },
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 4, horizontal: 16),
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: <Widget>[
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    right: 16.0),
-                                                child: Text("Hire me",
-                                                    style: white24),
-                                              ),
-                                              Icon(
-                                                Icons.chevron_right,
-                                                color: Colors.white,
-                                              )
-                                            ],
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 32),
+                        child: Text(
+                            "Together you and I will build a compelling app that'll keep your customers coming back for more.",
+                            style: white24,
+                            textAlign: TextAlign.center),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 32),
+                        child: SquaredButton(
+                          text: "HIRE ME! 😁",
+                          textStyle: white20Medium,
+                          backgroundColor: aOrange,
+                          onTap: () {
+                            final appState = AppState.of(context);
+                            appState.rootNavigatorState
+                                .pushNamed(HireMeDialog.routeName);
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 32),
+                        child: Image.asset("assets/images/alosha-discover.png"),
+                      ),
+                    ]),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: 16,
+                        right: 16,
+                        top: getValueForScreenType(
+                            context: context,
+                            mobile: 32,
+                            tablet: 32,
+                            desktop: getScreenWidth(context) * .2),
+                        bottom: 32),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text("My Work", style: titleADarkBlue24Bold),
+                        InkWell(
+                          onTap: () {
+                            final appBarNavigationState =
+                                AppState.of(context).appBarNavigatorState;
+                            appBarNavigationState
+                                .pushNamed(PortfolioPage.routeName);
+                          },
+                          child: Row(children: [
+                            Text("View portfolio", style: aLightBlue16),
+                            Icon(
+                              Icons.chevron_right,
+                              color: aLightBlue,
+                            )
+                          ]),
+                        )
+                      ],
+                    ),
+                  ),
+                  ProductPageView(assetPaths: [
+                    "assets/images/boss-cuts-home.png",
+                    "assets/images/tceshop-product-detail.png",
+                    "assets/images/alosha-profile.png"
+                  ]),
+                  Padding(
+                      padding: const EdgeInsets.only(top: 64),
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                bottom: 16, left: 16, right: 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text("My Clients", style: titleADarkBlue24Bold),
+                                RoundedButton(
+                                    backgroundColor: aOrange,
+                                    onTap: () {
+                                      final appBarNavigationState =
+                                          AppState.of(context)
+                                              .appBarNavigatorState;
+                                      appBarNavigationState
+                                          .pushNamed(HireMePage.routeName);
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 4, horizontal: 16),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 16.0),
+                                            child:
+                                                Text("Hire me", style: white24),
                                           ),
-                                        ))
-                                  ],
-                                ),
-                              ),
-                              Testimonials(),
-                            ],
-                          )),
-                    ])),
-                Footer(),
-              ],
-            ),
+                                          Icon(
+                                            Icons.chevron_right,
+                                            color: Colors.white,
+                                          )
+                                        ],
+                                      ),
+                                    ))
+                              ],
+                            ),
+                          ),
+                          Testimonials(),
+                        ],
+                      )),
+                ])),
+            Footer(),
           ],
         ),
-      ),
+      ],
     );
   }
 }

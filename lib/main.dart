@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/pages/hire_me_dialog.dart';
 import 'package:alkebuware_website/pages/menu_dialog.dart';
 import 'package:alkebuware_website/widgets/app_bar.dart';
+import 'package:alkebuware_website/widgets/scrollbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sentry/sentry.dart';
@@ -97,85 +99,34 @@ class AppState extends State<App> {
               key: _appBarNavigatorKey,
               onGenerateRoute: (settings) {
                 currentRoute = settings?.name;
-                if (settings.name
-                    .startsWith(PortfolioDetailPage.routeName(""))) {
-                  return MaterialPageRoute(
-                      settings: settings,
-                      builder: (context) => PortfolioDetailPage());
-                } else {
-                  return MaterialPageRoute(
-                      settings: settings, builder: routes[settings.name]);
-                }
+                final controller = ScrollController();
+                return MaterialPageRoute(
+                    settings: settings,
+                    builder: (_) => AScrollBar(
+                          controller: controller,
+                          child: SingleChildScrollView(
+                              controller: controller,
+                              child: routes[routes.keys.firstWhere(_match)](
+                                  context)),
+                        ));
               },
             )),
       ),
-//      builder: (BuildContext context, Widget widget) {
-//        return Material(
-//          child: WillPopScope(
-//            onWillPop: () async {
-//              print("onwillpop");
-//              return true;
-//            },
-//            child: Navigator(
-//                key: _rootNavigatorKey,
-//                onGenerateRoute: (settings) {
-//                  if (settings.name == MenuDialog.routeName) {
-//                    return MaterialPageRoute(
-//                        builder: (context) => MenuDialog(),
-//                        settings: settings,
-//                        fullscreenDialog: true);
-//                  } else if (settings.name
-//                      .startsWith(TestimonialDialog.routeName(""))) {
-//                    return MaterialPageRoute(
-//                        builder: (context) => TestimonialDialog(),
-//                        settings: settings,
-//                        fullscreenDialog: true);
-//                  } else {
-//                    return MaterialPageRoute(
-//                        builder: (context) {
-//                          return Scaffold(
-//                              appBar: AAppBar(navigatorKey: _appBarNavigatorKey),
-//                              backgroundColor: backgroundGray,
-//                              body: WillPopScope(
-//                                onWillPop: () async {
-//                                  print("onwillpop");
-//                                  return true;
-//                                },
-//                                child: Navigator(
-//                                  key: _appBarNavigatorKey,
-//                                  onGenerateRoute: (settings) {
-//                                    currentRoute = settings?.name;
-//                                    if (settings.name == PortfolioPage.routeName) {
-//                                      return MaterialPageRoute(
-//                                          settings: settings,
-//                                          builder: routes[settings.name]);
-//                                    } else if (settings.name.startsWith(
-//                                        PortfolioDetailPage.routeName(""))) {
-//                                      return MaterialPageRoute(
-//                                          settings: settings,
-//                                          builder: (context) => WillPopScope(
-//                                              onWillPop: () async {
-//                                                print("will pop");
-//                                                return true;
-//                                              },
-//                                              child: PortfolioDetailPage()));
-//                                    } else {
-//                                      return MaterialPageRoute(
-//                                          settings: settings,
-//                                          builder: routes[settings.name]);
-//                                    }
-//                                  },
-//                                ),
-//                              ));
-//                        },
-//                        settings: settings);
-//                  }
-//                }),
-//          ),
-//        );
-//      },
       localizationsDelegates: [DefaultMaterialLocalizations.delegate],
     );
+  }
+
+  bool _match(String name) {
+    final matcher =
+    name.split("/").map((e) => e.contains(":") ? "*" : e).toList();
+    final route = currentRoute.split("/").toList();
+    if (route.length != matcher.length) {
+      return false;
+    }
+    for (int i = 0; i < route.length; i++) {
+      if (route[i] != matcher[i] && matcher[i] != "*") return false;
+    }
+    return true;
   }
 }
 
@@ -186,4 +137,5 @@ final routes = {
   ServicesPage.routeName: (context) => ServicesPage(),
   AboutPage.routeName: (context) => AboutPage(),
   ResumePage.routeName: (context) => ResumePage(),
+  PortfolioDetailPage.routeName(":id"): (context) => PortfolioDetailPage(),
 };

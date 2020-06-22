@@ -16,6 +16,7 @@ dependencies:
   sentry: 3.0.1
   responsive_builder: 0.2.0+2
   draggable_scrollbar_sliver: 0.0.3
+  transparent_image: 1.0.0
 
 dev_dependencies:
   flutter_test:
