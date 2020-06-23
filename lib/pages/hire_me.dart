@@ -13,7 +13,7 @@ class HireMePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
+    return Wrap(alignment: WrapAlignment.center, children: [
       _HireMeCard(
         title: "Hire an Expert",
         description:
@@ -42,7 +42,10 @@ class HireMePage extends StatelessWidget {
         },
         backgroundIconPath: "assets/images/inquiry.png",
       ),
-      Testimonials(),
+          Padding(
+            padding: const EdgeInsets.only(top: 32.0),
+            child: Testimonials(),
+          ),
       Footer(),
     ]);
   }
@@ -68,31 +71,34 @@ class _HireMeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Card(
-        color: aDarkBlue,
-        elevation: 4,
-        child: Stack(children: [
-          Align(
-              alignment: Alignment.center,
-              child: Image.asset(backgroundIconPath)),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(title, style: titleWhite16),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Text(description, style: white16),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: GestureDetector(
-                    child: Text(callToAction, style: titleAOrange24),
-                    onTap: onTap),
-              ),
-            ]),
-          )
-        ]),
+      child: Container(
+        constraints: BoxConstraints(maxWidth: 480),
+        child: Card(
+          color: aDarkBlue,
+          elevation: 4,
+          child: Stack(children: [
+            Align(
+                alignment: Alignment.center,
+                child: Image.asset(backgroundIconPath)),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(title, style: titleWhite16),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: Text(description, style: white16),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: GestureDetector(
+                      child: Text(callToAction, style: titleAOrange24),
+                      onTap: onTap),
+                ),
+              ]),
+            )
+          ]),
+        ),
       ),
     );
   }

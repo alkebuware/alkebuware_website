@@ -2,6 +2,7 @@ import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/pages/about.dart';
+import 'package:alkebuware_website/pages/general_inquiry_dialog.dart';
 import 'package:alkebuware_website/pages/hire_me.dart';
 import 'package:alkebuware_website/pages/home.dart';
 import 'package:alkebuware_website/pages/menu_dialog.dart';
@@ -73,8 +74,10 @@ class __TabletAAppbarState extends State<_TabletAAppbar> {
                     onTap: () {
                       if (AppState.of(context).currentRoute !=
                           HomePage.routeName) {
-                        widget.navigatorKey.currentState
-                            .pushReplacementNamed(HomePage.routeName);
+                        AppState.of(context)
+                            .appBarNavigatorState
+                            .pushNamed(HomePage.routeName);
+                        setState(() {});
                       }
                     },
                     splashColor: Colors.white24,
@@ -90,6 +93,8 @@ class __TabletAAppbarState extends State<_TabletAAppbar> {
             ),
             _NavigationButton(
                 state: this, routeName: HomePage.routeName, text: "Home"),
+            _NavigationButton(
+                state: this, routeName: HireMePage.routeName, text: "Hire me"),
             _NavigationButton(
                 state: this,
                 routeName: PortfolioPage.routeName,
@@ -138,8 +143,10 @@ class _MobileAAppbar extends StatelessWidget {
                     onTap: () {
                       if (AppState.of(context).currentRoute !=
                           HomePage.routeName) {
-                        navigatorKey.currentState
-                            .pushReplacementNamed(HomePage.routeName);
+                        AppState
+                            .of(context)
+                            .appBarNavigatorState
+                            .pushNamed(HomePage.routeName);
                       }
                     },
                     splashColor: Colors.white24,
@@ -173,8 +180,7 @@ class LetsChatButton extends StatelessWidget {
         textStyle: aOrange14Medium,
         onTap: () {
           final appState = AppState.of(context);
-          appState.appBarNavigatorState
-              .pushNamed(HireMePage.routeName);
+          appState.rootNavigatorState.pushNamed(GeneralInquiryDialog.routeName);
         },
       ),
     );

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/pages/hire_me_dialog.dart';
 import 'package:alkebuware_website/pages/menu_dialog.dart';
 import 'package:alkebuware_website/widgets/app_bar.dart';
@@ -57,7 +56,6 @@ class AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    _appBarNavigatorKey = GlobalKey<NavigatorState>();
     _rootNavigatorKey = GlobalKey<NavigatorState>();
   }
 
@@ -72,46 +70,76 @@ class AppState extends State<App> {
           return MaterialPageRoute(
               builder: (_) => Material(child: MenuDialog()));
         } else if (name == HireMeDialog.routeName) {
-          return MaterialPageRoute(
-              builder: (_) => Material(child: HireMeDialog()),
+          return PageRouteBuilder(
+              opaque: false,
+              pageBuilder: (_, __, ___) => HireMeDialog(),
               settings: settings);
         } else if (name == GeneralInquiryDialog.routeName) {
-          return MaterialPageRoute(
-              builder: (_) => Material(child: GeneralInquiryDialog()),
+          return PageRouteBuilder(
+              opaque: false,
+              pageBuilder: (_, __, ___) => GeneralInquiryDialog(),
               settings: settings);
         } else if (name == ServicesInquiryDialog.routeName) {
-          return MaterialPageRoute(
-              builder: (_) => Material(child: ServicesInquiryDialog()),
+          return PageRouteBuilder(
+              opaque: false,
+              pageBuilder: (_, __, ___) => ServicesInquiryDialog(),
               settings: settings);
         } else {
-          return null;
+          _appBarNavigatorKey = GlobalKey<NavigatorState>();
+          return MaterialPageRoute(
+              builder: (_) => Material(
+                      child: WillPopScope(
+                    onWillPop: () async {
+                      _appBarNavigatorKey.currentState.maybePop();
+                      return false;
+                    },
+                    child: Scaffold(
+                        appBar: AAppBar(navigatorKey: _appBarNavigatorKey),
+                        backgroundColor: backgroundGray,
+                        body: Navigator(
+                          key: _appBarNavigatorKey,
+                          onGenerateRoute: (settings) {
+                            currentRoute = settings?.name;
+                            final controller = ScrollController();
+                            return MaterialPageRoute(
+                                settings: settings,
+                                builder: (_) => AScrollBar(
+                                      controller: controller,
+                                      child: SingleChildScrollView(
+                                          controller: controller,
+                                          child: routes[routes.keys
+                                              .firstWhere(_match)](context)),
+                                    ));
+                          },
+                        )),
+                  )));
         }
       },
-      home: WillPopScope(
-        onWillPop: () async {
-          _appBarNavigatorKey.currentState.maybePop();
-          return false;
-        },
-        child: Scaffold(
-            appBar: AAppBar(navigatorKey: _appBarNavigatorKey),
-            backgroundColor: backgroundGray,
-            body: Navigator(
-              key: _appBarNavigatorKey,
-              onGenerateRoute: (settings) {
-                currentRoute = settings?.name;
-                final controller = ScrollController();
-                return MaterialPageRoute(
-                    settings: settings,
-                    builder: (_) => AScrollBar(
-                          controller: controller,
-                          child: SingleChildScrollView(
-                              controller: controller,
-                              child: routes[routes.keys.firstWhere(_match)](
-                                  context)),
-                        ));
-              },
-            )),
-      ),
+//      home: WillPopScope(
+//        onWillPop: () async {
+//          _appBarNavigatorKey.currentState.maybePop();
+//          return false;
+//        },
+//        child: Scaffold(
+//            appBar: AAppBar(navigatorKey: _appBarNavigatorKey),
+//            backgroundColor: backgroundGray,
+//            body: Navigator(
+//              key: _appBarNavigatorKey,
+//              onGenerateRoute: (settings) {
+//                currentRoute = settings?.name;
+//                final controller = ScrollController();
+//                return MaterialPageRoute(
+//                    settings: settings,
+//                    builder: (_) => AScrollBar(
+//                          controller: controller,
+//                          child: SingleChildScrollView(
+//                              controller: controller,
+//                              child: routes[routes.keys.firstWhere(_match)](
+//                                  context)),
+//                        ));
+//              },
+//            )),
+//      ),
       localizationsDelegates: [DefaultMaterialLocalizations.delegate],
     );
   }
