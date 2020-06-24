@@ -132,7 +132,11 @@ class _Button extends StatelessWidget {
         backgroundColor: Colors.transparent,
         text: text,
         textStyle: titleWhite24,
-        onTap: () => appState.appBarNavigatorState.pushNamed(routeName),
+        onTap: () {
+          appState.appBarNavigatorState.pushNamed(routeName);
+          // ignore: invalid_use_of_protected_member
+          AppState.of(context).appBarState.setState(() {});
+        },
       ),
     );
   }

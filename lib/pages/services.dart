@@ -119,8 +119,6 @@ class _ServicesCard extends StatelessWidget {
             image: AssetImage(backgroundIconPath), fit: BoxFit.fitHeight),
         borderRadius: BorderRadius.circular(
             getValueForScreenType(context: context, desktop: 16, mobile: 0)),
-//        borderRadius: getValueForScreenType(
-//            mobile: null, desktop: BorderRadius.circular(16)),
       ),
       child: Stack(children: [
         Padding(

@@ -4,6 +4,7 @@ import 'package:alkebuware_website/pages/general_inquiry_dialog.dart';
 import 'package:alkebuware_website/pages/hire_me_dialog.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/footer.dart';
+import 'package:alkebuware_website/widgets/squared_button.dart';
 import 'package:alkebuware_website/widgets/testimonials.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -42,10 +43,10 @@ class HireMePage extends StatelessWidget {
         },
         backgroundIconPath: "assets/images/inquiry.png",
       ),
-          Padding(
-            padding: const EdgeInsets.only(top: 32.0),
-            child: Testimonials(),
-          ),
+      Padding(
+        padding: const EdgeInsets.only(top: 32.0),
+        child: Testimonials(),
+      ),
       Footer(),
     ]);
   }
@@ -82,20 +83,23 @@ class _HireMeCard extends StatelessWidget {
                 child: Image.asset(backgroundIconPath)),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(title, style: titleWhite16),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: Text(description, style: white16),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: GestureDetector(
-                      child: Text(callToAction, style: titleAOrange24),
-                      onTap: onTap),
-                ),
-              ]),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: titleWhite16),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: Text(description, style: white16),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: SquaredButton(
+                          textStyle: titleAOrange24,
+                          text: callToAction,
+                          backgroundColor: Colors.transparent,
+                          onTap: onTap),
+                    ),
+                  ]),
             )
           ]),
         ),

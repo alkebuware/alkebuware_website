@@ -43,6 +43,7 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   GlobalKey<NavigatorState> _appBarNavigatorKey;
   GlobalKey<NavigatorState> _rootNavigatorKey;
+  GlobalKey _appBarKey;
   String currentRoute;
 
   static AppState of(BuildContext context) {
@@ -52,6 +53,8 @@ class AppState extends State<App> {
   NavigatorState get appBarNavigatorState => _appBarNavigatorKey.currentState;
 
   NavigatorState get rootNavigatorState => _rootNavigatorKey.currentState;
+
+  State get appBarState => _appBarKey.currentState;
 
   @override
   void initState() {
@@ -85,16 +88,18 @@ class AppState extends State<App> {
               pageBuilder: (_, __, ___) => ServicesInquiryDialog(),
               settings: settings);
         } else {
+          _appBarKey = GlobalKey();
           _appBarNavigatorKey = GlobalKey<NavigatorState>();
           return MaterialPageRoute(
               builder: (_) => Material(
-                      child: WillPopScope(
+                  child: WillPopScope(
                     onWillPop: () async {
                       _appBarNavigatorKey.currentState.maybePop();
                       return false;
                     },
                     child: Scaffold(
-                        appBar: AAppBar(navigatorKey: _appBarNavigatorKey),
+                        appBar: AAppBar(
+                            key: _appBarKey, navigatorKey: _appBarNavigatorKey),
                         backgroundColor: backgroundGray,
                         body: Navigator(
                           key: _appBarNavigatorKey,
@@ -104,12 +109,12 @@ class AppState extends State<App> {
                             return MaterialPageRoute(
                                 settings: settings,
                                 builder: (_) => AScrollBar(
+                                  controller: controller,
+                                  child: SingleChildScrollView(
                                       controller: controller,
-                                      child: SingleChildScrollView(
-                                          controller: controller,
-                                          child: routes[routes.keys
-                                              .firstWhere(_match)](context)),
-                                    ));
+                                      child: routes[routes.keys
+                                          .firstWhere(_match)](context)),
+                                ));
                           },
                         )),
                   )));

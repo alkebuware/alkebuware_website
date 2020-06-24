@@ -17,28 +17,33 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 import 'rounded_button.dart';
 
-class AAppBar extends StatelessWidget implements PreferredSizeWidget {
+class AAppBar extends StatefulWidget implements PreferredSizeWidget {
   final GlobalKey<NavigatorState> navigatorKey;
 
   const AAppBar({Key key, this.navigatorKey}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: _MobileAAppbar(
-        navigatorKey: navigatorKey,
-      ),
-      tablet: _MobileAAppbar(
-        navigatorKey: navigatorKey,
-      ),
-      desktop: _TabletAAppbar(
-        navigatorKey: navigatorKey,
-      ),
-    );
-  }
+  _AAppBarState createState() => _AAppBarState();
 
   @override
   Size get preferredSize => Size.fromHeight(80);
+}
+
+class _AAppBarState extends State<AAppBar> {
+  @override
+  Widget build(BuildContext context) {
+    return ScreenTypeLayout(
+      mobile: _MobileAAppbar(
+        navigatorKey: widget.navigatorKey,
+      ),
+      tablet: _MobileAAppbar(
+        navigatorKey: widget.navigatorKey,
+      ),
+      desktop: _TabletAAppbar(
+        navigatorKey: widget.navigatorKey,
+      ),
+    );
+  }
 }
 
 class _TabletAAppbar extends StatefulWidget {
