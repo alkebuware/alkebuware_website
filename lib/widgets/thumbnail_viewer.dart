@@ -1,7 +1,7 @@
+import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/main.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:alkebuware_website/colors.dart';
 
 class ThumbnailViewer extends StatelessWidget {
   final List<String> assetPaths;
@@ -18,7 +18,7 @@ class ThumbnailViewer extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           for (String path in assetPaths)
-            GestureDetector(
+            InkWell(
               onTap: () {
                 showDialog<void>(
                   context: context,
@@ -30,9 +30,9 @@ class ThumbnailViewer extends StatelessWidget {
                           PhotoView(
                             imageProvider: AssetImage(path),
                             initialScale:
-                                PhotoViewComputedScale.contained * 0.7,
+                            PhotoViewComputedScale.contained * 0.7,
                             backgroundDecoration:
-                                BoxDecoration(color: Colors.transparent),
+                            BoxDecoration(color: Colors.transparent),
                           ),
                           Align(
                             alignment: Alignment.topRight,

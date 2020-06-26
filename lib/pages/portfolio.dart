@@ -17,10 +17,13 @@ class PortfolioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Wrap(
-        children: [
-          for (Product p in allProducts) ProductCard(product: p),
-        ],
+      Container(
+        constraints: BoxConstraints(maxWidth: 1024),
+        child: Wrap(
+          children: [
+            for (Product p in allProducts) ProductCard(product: p),
+          ],
+        ),
       ),
       Footer()
     ]);

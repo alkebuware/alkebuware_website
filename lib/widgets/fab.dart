@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class AFab extends StatelessWidget {
@@ -5,11 +7,10 @@ class AFab extends StatelessWidget {
   final Widget child;
   final Color backgroundColor;
 
-  const AFab(
-      {Key key,
-      @required this.onPressed,
-      @required this.child,
-      @required this.backgroundColor})
+  const AFab({Key key,
+    @required this.onPressed,
+    @required this.child,
+    @required this.backgroundColor})
       : super(key: key);
 
   @override
@@ -23,9 +24,10 @@ class AFab extends StatelessWidget {
         height: 56,
         width: 56,
         child: InkWell(
-          child: Container(child: child),
+          child: child,
           splashColor: Colors.white38,
           highlightColor: Colors.white38,
+          borderRadius: BorderRadius.circular(1000),
           onTap: onPressed,
         ),
       ),

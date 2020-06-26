@@ -21,11 +21,14 @@ class Testimonials extends StatelessWidget {
 class _Desktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: allTestimonials
-          .map((t) => Flexible(child: TestimonialCard(testimonial: t)))
-          .toList(),
+    return Container(
+      constraints: BoxConstraints(maxWidth: 1024),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: allTestimonials
+            .map((t) => Flexible(child: TestimonialCard(testimonial: t)))
+            .toList(),
+      ),
     );
   }
 }

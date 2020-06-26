@@ -5,8 +5,10 @@ import 'package:alkebuware_website/pages/menu_dialog.dart';
 import 'package:alkebuware_website/widgets/app_bar.dart';
 import 'package:alkebuware_website/widgets/scrollbar.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sentry/sentry.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'colors.dart';
 import 'pages/about.dart';
@@ -18,6 +20,7 @@ import 'pages/portfolio_detail.dart';
 import 'pages/resume.dart';
 import 'pages/services.dart';
 import 'pages/services_inquiry_dialog.dart';
+import 'widgets/fab.dart';
 
 final SentryClient sentry = SentryClient(
     dsn:
@@ -92,7 +95,7 @@ class AppState extends State<App> {
           _appBarNavigatorKey = GlobalKey<NavigatorState>();
           return MaterialPageRoute(
               builder: (_) => Material(
-                  child: WillPopScope(
+                      child: WillPopScope(
                     onWillPop: () async {
                       _appBarNavigatorKey.currentState.maybePop();
                       return false;
@@ -101,10 +104,15 @@ class AppState extends State<App> {
                         appBar: AAppBar(
                             key: _appBarKey, navigatorKey: _appBarNavigatorKey),
                         backgroundColor: backgroundGray,
+                        floatingActionButtonLocation:
+                        FloatingActionButtonLocation.endDocked,
+                        floatingActionButton: _floatingActionButton,
                         body: Navigator(
                           key: _appBarNavigatorKey,
                           onGenerateRoute: (settings) {
                             currentRoute = settings?.name;
+                            Future.delayed(Duration(), () =>
+                                setState(() => currentRoute = settings?.name));
                             final controller = ScrollController();
                             return MaterialPageRoute(
                                 settings: settings,
@@ -147,6 +155,38 @@ class AppState extends State<App> {
 //      ),
       localizationsDelegates: [DefaultMaterialLocalizations.delegate],
     );
+  }
+
+  Widget get _floatingActionButton {
+    Widget child;
+    if (currentRoute == ResumePage.routeName) {
+      child = Column(children: [
+        AFab(
+            onPressed: () {
+              if (kIsWeb) {
+                launch("/resume.pdf");
+              } else {
+                print("can't show pdf in non-web");
+              }
+            },
+            backgroundColor: aOrange,
+            child: Image.asset("assets/images/download.png")),
+        Padding(
+          padding: const EdgeInsets.only(top: 32.0),
+          child: AFab(
+              onPressed: () {
+                launch(
+                    "https://www.linkedin.com/in/tariq-alkebu-lan-86670245/");
+              },
+              backgroundColor: linkedInBlue,
+              child: Image.asset("assets/images/linkedin.png")),
+        ),
+      ]);
+    } else {
+      child = Container();
+    }
+
+    return Padding(padding: EdgeInsets.only(top: 112, right: 16), child: child);
   }
 
   bool _match(String name) {

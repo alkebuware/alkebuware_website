@@ -30,63 +30,64 @@ class ServicesPage extends StatelessWidget {
                 style: aDarkBlue16)),
       ])),
       Container(
+          constraints: BoxConstraints(maxWidth: 1024),
           child: Wrap(
-        spacing: 16,
-        alignment: WrapAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 32),
-            child: _ServicesCard(
-                title: "Web & App Development",
-                description:
+            spacing: 16,
+            alignment: WrapAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 32),
+                child: _ServicesCard(
+                    title: "Web & App Development",
+                    description:
                     "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+                        "Lorem ipsum Lorem ipsum Lorem ipsum ",
+                    onTap: () {
+                      final appState = AppState.of(context);
+                      appState.rootNavigatorState.pushNamed(
+                          ServicesInquiryDialog.routeName,
+                          arguments: {"title": "Development Inquiry"});
+                    },
+                    backgroundIconPath: "assets/images/development.png"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 32),
+                child: _ServicesCard(
+                    title: "Consulting",
+                    description:
                     "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+                        "Lorem ipsum Lorem ipsum Lorem ipsum ",
+                    onTap: () {
+                      final appState = AppState.of(context);
+                      appState.rootNavigatorState.pushNamed(
+                          ServicesInquiryDialog.routeName,
+                          arguments: {"title": "Consulting"});
+                    },
+                    backgroundIconPath: "assets/images/consulting.png"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 32),
+                child: _ServicesCard(
+                    title: "UI Design",
+                    description:
                     "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                    "Lorem ipsum Lorem ipsum Lorem ipsum ",
-                onTap: () {
-                  final appState = AppState.of(context);
-                  appState.rootNavigatorState.pushNamed(
-                      ServicesInquiryDialog.routeName,
-                      arguments: {"title": "Development Inquiry"});
-                },
-                backgroundIconPath: "assets/images/development.png"),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 32),
-            child: _ServicesCard(
-                title: "Consulting",
-                description:
-                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                    "Lorem ipsum Lorem ipsum Lorem ipsum ",
-                onTap: () {
-                  final appState = AppState.of(context);
-                  appState.rootNavigatorState.pushNamed(
-                      ServicesInquiryDialog.routeName,
-                      arguments: {"title": "Consulting"});
-                },
-                backgroundIconPath: "assets/images/consulting.png"),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 32),
-            child: _ServicesCard(
-                title: "UI Design",
-                description:
-                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                    "Lorem ipsum Lorem ipsum Lorem ipsum ",
-                onTap: () {
-                  final appState = AppState.of(context);
-                  appState.rootNavigatorState.pushNamed(
-                      ServicesInquiryDialog.routeName,
-                      arguments: {"title": "UI Design Inquiry"});
-                },
-                backgroundIconPath: "assets/images/ui-design2.png"),
-          ),
-        ],
-      )),
+                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
+                        "Lorem ipsum Lorem ipsum Lorem ipsum ",
+                    onTap: () {
+                      final appState = AppState.of(context);
+                      appState.rootNavigatorState.pushNamed(
+                          ServicesInquiryDialog.routeName,
+                          arguments: {"title": "UI Design Inquiry"});
+                    },
+                    backgroundIconPath: "assets/images/ui-design2.png"),
+              ),
+            ],
+          )),
       Footer()
     ]);
   }
