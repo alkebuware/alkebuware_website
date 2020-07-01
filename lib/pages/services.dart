@@ -23,10 +23,12 @@ class ServicesPage extends StatelessWidget {
         Padding(
             padding: EdgeInsets.only(top: 16),
             child: Text(
-                "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem "
-                "ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                "Lorem ipsum Lorem ipsum",
+                "Having worked with a number of founders, business owners, and "
+                "CEOs alike, I’ve learned to help entrepreneurs in a number of "
+                "different ways. Whether it’s building an app, designing the "
+                "UI for an app, or you just need a sounding board to bounce "
+                "your ideas off. I’m sure I can help you reach your business "
+                "goals.",
                 style: aDarkBlue16)),
       ])),
       Container(
@@ -40,10 +42,13 @@ class ServicesPage extends StatelessWidget {
                 child: _ServicesCard(
                     title: "Web & App Development",
                     description:
-                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum ",
+                    "I offer mobile and web application development services "
+                        "to build the app you need. Using one of the latest "
+                        "technologies in hybrid mobile application development, "
+                        "Flutter. I can build you an Android, iOS, and Web "
+                        "application with one codebase. Tap the button below to "
+                        "send an inquiry to learn more about how I can help with "
+                        "developing your app.",
                     onTap: () {
                       final appState = AppState.of(context);
                       appState.rootNavigatorState.pushNamed(
@@ -57,10 +62,14 @@ class ServicesPage extends StatelessWidget {
                 child: _ServicesCard(
                     title: "Consulting",
                     description:
-                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum ",
+                    "Sometimes during the early stages of launching a new "
+                        "digital product you may need help with figuring out a "
+                        "timeline, or an estimate of the costs, or a general "
+                        "overview of the process of getting your very own app in "
+                        "the iOS and Android stores. This is doubly true if you’re "
+                        "a new entrepreneur. Tap the button below to send an "
+                        "inquiry to learn more about how I can help you learn how "
+                        "to launch the app you need.",
                     onTap: () {
                       final appState = AppState.of(context);
                       appState.rootNavigatorState.pushNamed(
@@ -74,10 +83,12 @@ class ServicesPage extends StatelessWidget {
                 child: _ServicesCard(
                     title: "UI Design",
                     description:
-                    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum ",
+                    "So you know the steps to launch your digital product? You "
+                        "now need someone that can execute your vision and have "
+                        "them create the design, look, and feel of your product. I "
+                        "can help with this too. Tap the button below to send an "
+                        "inquiry to learn more about how I can bring your app to "
+                        "life.",
                     onTap: () {
                       final appState = AppState.of(context);
                       appState.rootNavigatorState.pushNamed(

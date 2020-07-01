@@ -1,4 +1,3 @@
-import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/models/products.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/utils/get_id.dart';
@@ -19,10 +18,8 @@ class PortfolioDetailPage extends StatefulWidget {
 class _PortfolioDetailPageState extends State<PortfolioDetailPage> {
   @override
   Widget build(BuildContext context) {
-    final appState = AppState.of(context);
     final id = getId(context);
     if (id == null) {
-      Future.delayed(Duration(), () => appState.appBarNavigatorState.pop());
       return Container();
     }
 

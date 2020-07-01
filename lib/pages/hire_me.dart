@@ -18,10 +18,11 @@ class HireMePage extends StatelessWidget {
       _HireMeCard(
         title: "Hire an Expert",
         description:
-            "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem "
-            "ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-            "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem "
-            "ipsum Lorem ipsum",
+            "Are you looking to hire an app developer? Or maybe you need someone to "
+            "walk you through the process of launching an app? Or you’re a "
+            "start-up founder looking for a technical co-founder to help launch "
+            "your dream product? Either way, tap that button below to send me the "
+            "details on your project and I’ll get back to you within 24 hours.",
         callToAction: "Reach Out",
         onTap: () {
           final appState = AppState.of(context);
@@ -32,10 +33,9 @@ class HireMePage extends StatelessWidget {
       _HireMeCard(
         title: "General Inquiry",
         description:
-            "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem "
-            "ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-            "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem "
-            "ipsum Lorem ipsum",
+        "Feel free to reach out if you have any questions or comments "
+            "about the services I offer. I also always appreciate a friendly "
+            "hello. So tap that button but below and send away.",
         callToAction: "Send Inquiry",
         onTap: () {
           final appState = AppState.of(context);

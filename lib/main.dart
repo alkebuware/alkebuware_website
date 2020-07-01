@@ -105,13 +105,12 @@ class AppState extends State<App> {
                             key: _appBarKey, navigatorKey: _appBarNavigatorKey),
                         backgroundColor: backgroundGray,
                         floatingActionButtonLocation:
-                        FloatingActionButtonLocation.endDocked,
+                            FloatingActionButtonLocation.endDocked,
                         floatingActionButton: _floatingActionButton,
                         body: Navigator(
                           key: _appBarNavigatorKey,
                           onGenerateRoute: (settings) {
-                            currentRoute = settings?.name;
-                            Future.delayed(Duration(), () =>
+                            WidgetsBinding.instance.addPostFrameCallback((_) =>
                                 setState(() => currentRoute = settings?.name));
                             final controller = ScrollController();
                             return MaterialPageRoute(
@@ -120,39 +119,17 @@ class AppState extends State<App> {
                                   controller: controller,
                                   child: SingleChildScrollView(
                                       controller: controller,
-                                      child: routes[routes.keys
-                                          .firstWhere(_match)](context)),
+                                      child: routes[routes.keys.firstWhere(
+                                          _match,
+                                          orElse: () =>
+                                          HomePage
+                                              .routeName)](context)),
                                 ));
                           },
                         )),
                   )));
         }
       },
-//      home: WillPopScope(
-//        onWillPop: () async {
-//          _appBarNavigatorKey.currentState.maybePop();
-//          return false;
-//        },
-//        child: Scaffold(
-//            appBar: AAppBar(navigatorKey: _appBarNavigatorKey),
-//            backgroundColor: backgroundGray,
-//            body: Navigator(
-//              key: _appBarNavigatorKey,
-//              onGenerateRoute: (settings) {
-//                currentRoute = settings?.name;
-//                final controller = ScrollController();
-//                return MaterialPageRoute(
-//                    settings: settings,
-//                    builder: (_) => AScrollBar(
-//                          controller: controller,
-//                          child: SingleChildScrollView(
-//                              controller: controller,
-//                              child: routes[routes.keys.firstWhere(_match)](
-//                                  context)),
-//                        ));
-//              },
-//            )),
-//      ),
       localizationsDelegates: [DefaultMaterialLocalizations.delegate],
     );
   }
@@ -190,6 +167,7 @@ class AppState extends State<App> {
   }
 
   bool _match(String name) {
+    if (currentRoute == null || name == null) return false;
     final matcher =
     name.split("/").map((e) => e.contains(":") ? "*" : e).toList();
     final route = currentRoute.split("/").toList();

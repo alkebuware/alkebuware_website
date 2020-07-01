@@ -21,19 +21,20 @@ final List<Product> allProducts = [
       "assets/images/alosha-share-success.png",
       "assets/images/alosha-sign-up.png",
     ],
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
-        "sollicitudin eleifend lacus, et pretium elit varius ut. Aenean gravida"
-        " facilisis sem, nec tristique ipsum finibus sed. Mauris consectetur ",
-    detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
-        "sollicitudin eleifend lacus, et pretium elit varius ut. Aenean gravida"
-        " facilisis sem, nec tristique ipsum finibus sed. Mauris consectetur ni"
-        "sl eros, ut ultrices magna pharetra nec. Mauris massa nisl, viverra ve"
-        "l condimentum id, tincidunt nec magna. Nullam ut semper nisi. Nulla vi"
-        "verra est sagittis odio cursus egestas. Quisque imperdiet purus est, e"
-        "get tempus ante molestie non. Maecenas quis dignissim est. Sed hendrer"
-        "it purus eu nulla facilisis tristique. Nulla massa neque, cursus susci"
-        "pit luctus vel, efficitur ut diam. Mauris molestie ligula a lacus elei"
-        "fend, sit amet vestibulum libero porttitor.",
+    summary: "Alosha is an iOS and Android application that focuses on helping "
+        "new and upcoming artists with getting exposure and money quicker for "
+        "their creative efforts by providing a place to expose their artwork "
+        "to prospective buyers. Serving, painters, musicians, and sculptors "
+        "alike.",
+    detail: "Alosha is an iOS and Android application that focuses on helping "
+        "new and upcoming artists with getting exposure and money quicker for "
+        "their creative efforts by providing a place to expose their artwork "
+        "to prospective buyers. Serving, painters, musicians, and sculptors "
+        "alike. I worked with the founder of this platform to design and develop "
+        "this product. Walking with him through the entire process of bringing "
+        "his ideas to life and delivering the app to the market. We now have "
+        "an ongoing relationship and are looking forward to expanding the "
+        "product to the web later this year as a web application.",
     websiteUrl: "https://www.alosha.net",
   ),
   Product(
@@ -48,19 +49,19 @@ final List<Product> allProducts = [
       "assets/images/boss-cuts-products.png",
       "assets/images/boss-cuts-styles.png",
     ],
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
-        "sollicitudin eleifend lacus, et pretium elit varius ut. Aenean gravida"
-        " facilisis sem, nec tristique ipsum finibus sed. Mauris consectetur ",
-    detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
-        "sollicitudin eleifend lacus, et pretium elit varius ut. Aenean gravida"
-        " facilisis sem, nec tristique ipsum finibus sed. Mauris consectetur ni"
-        "sl eros, ut ultrices magna pharetra nec. Mauris massa nisl, viverra ve"
-        "l condimentum id, tincidunt nec magna. Nullam ut semper nisi. Nulla vi"
-        "verra est sagittis odio cursus egestas. Quisque imperdiet purus est, e"
-        "get tempus ante molestie non. Maecenas quis dignissim est. Sed hendrer"
-        "it purus eu nulla facilisis tristique. Nulla massa neque, cursus susci"
-        "pit luctus vel, efficitur ut diam. Mauris molestie ligula a lacus elei"
-        "fend, sit amet vestibulum libero porttitor.",
+    summary: "Boss Cuts is a Barber Shop based in New Zealand specializing in "
+        "boutique hair cuts. To improve the prestige of their brand the client "
+        "wanted to create a native mobile experience for both Android and iOS. "
+        "With a mobile app for their business they were able to separate "
+        "themselves from other Barbershops as a high end Hair Boutique.",
+    detail: "Boss Cuts is a Barber Shop based in New Zealand specializing in "
+        "boutique hair cuts. To improve the prestige of their brand the client "
+        "wanted to create a native mobile experience for both Android and iOS. "
+        "Having a mobile app for their business they were able to separate "
+        "themselves from other Barbershops as a high end Hair Boutique. The "
+        "client came with designs for how the app should look, so I developed "
+        "the app per their specification and launched the iOS and Android apps "
+        "to their respective stores over the span of 6 weeks.",
   ),
 //  Product(
 //    name: "Companions Forever",
@@ -100,19 +101,17 @@ final List<Product> allProducts = [
       "assets/images/tceshop-product-detail-desktop.png",
       "assets/images/tceshop-search-desktop.png",
     ],
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
-        "sollicitudin eleifend lacus, et pretium elit varius ut. Aenean gravida"
-        " facilisis sem, nec tristique ipsum finibus sed. Mauris consectetur ",
-    detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
-        "sollicitudin eleifend lacus, et pretium elit varius ut. Aenean gravida"
-        " facilisis sem, nec tristique ipsum finibus sed. Mauris consectetur ni"
-        "sl eros, ut ultrices magna pharetra nec. Mauris massa nisl, viverra ve"
-        "l condimentum id, tincidunt nec magna. Nullam ut semper nisi. Nulla vi"
-        "verra est sagittis odio cursus egestas. Quisque imperdiet purus est, e"
-        "get tempus ante molestie non. Maecenas quis dignissim est. Sed hendrer"
-        "it purus eu nulla facilisis tristique. Nulla massa neque, cursus susci"
-        "pit luctus vel, efficitur ut diam. Mauris molestie ligula a lacus elei"
-        "fend, sit amet vestibulum libero porttitor.",
+    summary: "The Cultural Exchange Shop is a successful online store that "
+        "focuses on unique items that you can't quite find anywhere else. They "
+        "wanted to do a rebuild, and redesign of the platform, as they prepare "
+        "to scale their business to a broader market.",
+    detail: "The Cultural Exchange Shop is a successful online store that "
+        "focuses on unique items that you can't quite find anywhere else. They "
+        "wanted to do a rebuild, and redesign of the platform, as they prepare "
+        "to scale their business to a broader market. Working hand-in-hand "
+        "with the owner overhauled the look of their e-commerce website, and "
+        "optimized the shipping process using a new and improved admin "
+        "dashboard.",
   ),
 ];
 
