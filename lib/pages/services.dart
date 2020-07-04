@@ -42,7 +42,7 @@ class ServicesPage extends StatelessWidget {
                 child: _ServicesCard(
                     title: "Web & App Development",
                     description:
-                    "I offer mobile and web application development services "
+                        "I offer mobile and web application development services "
                         "to build the app you need. Using one of the latest "
                         "technologies in hybrid mobile application development, "
                         "Flutter. I can build you an Android, iOS, and Web "
@@ -50,10 +50,9 @@ class ServicesPage extends StatelessWidget {
                         "send an inquiry to learn more about how I can help with "
                         "developing your app.",
                     onTap: () {
-                      final appState = AppState.of(context);
-                      appState.rootNavigatorState.pushNamed(
-                          ServicesInquiryDialog.routeName,
-                          arguments: {"title": "Development Inquiry"});
+                      ServicesInquiryDialogState.title = "Development Inquiry";
+                      router.navigateTo(
+                          context, ServicesInquiryDialog.routeName);
                     },
                     backgroundIconPath: "assets/images/development.png"),
               ),
@@ -71,10 +70,9 @@ class ServicesPage extends StatelessWidget {
                         "inquiry to learn more about how I can help you learn how "
                         "to launch the app you need.",
                     onTap: () {
-                      final appState = AppState.of(context);
-                      appState.rootNavigatorState.pushNamed(
-                          ServicesInquiryDialog.routeName,
-                          arguments: {"title": "Consulting"});
+                      ServicesInquiryDialogState.title = "Consulting";
+                      router.navigateTo(
+                          context, ServicesInquiryDialog.routeName);
                     },
                     backgroundIconPath: "assets/images/consulting.png"),
               ),
@@ -90,10 +88,9 @@ class ServicesPage extends StatelessWidget {
                         "inquiry to learn more about how I can bring your app to "
                         "life.",
                     onTap: () {
-                      final appState = AppState.of(context);
-                      appState.rootNavigatorState.pushNamed(
-                          ServicesInquiryDialog.routeName,
-                          arguments: {"title": "UI Design Inquiry"});
+                      ServicesInquiryDialogState.title = "UI Design Inquiry";
+                      router.navigateTo(
+                          context, ServicesInquiryDialog.routeName);
                     },
                     backgroundIconPath: "assets/images/ui-design2.png"),
               ),

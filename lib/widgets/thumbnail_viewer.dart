@@ -41,8 +41,7 @@ class ThumbnailViewer extends StatelessWidget {
                               child: IconButton(
                                   icon: Image.asset("assets/images/close.png"),
                                   onPressed: () {
-                                    final appState = AppState.of(context);
-                                    appState.rootNavigatorState.pop();
+                                    router.pop(context);
                                   }),
                             ),
                           ),

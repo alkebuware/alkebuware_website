@@ -22,13 +22,42 @@ class ResumePage extends StatelessWidget {
                   children: [
                 Text("Professional Summary", style: titleADarkBlue24Bold),
                 Padding(
-                    padding: EdgeInsets.only(top: 16, right: 32),
+                    padding: EdgeInsets.only(top: 16, right: 32, bottom: 16),
                     child: Text(
-                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem "
-                        "ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
-                        "Lorem ipsum Lorem ipsum",
+                        "Software engineer with 5+ years of "
+                        "experience with 3+ years in mobile "
+                        "development and a background in embedded development."
+                        "With experience managing multidisciplinary teams "
+                        "using tools like Asana and a value for "
+                        "clean, concise, and well documented code I'm certain "
+                        "I'd be a great asset to your team.",
                         style: aDarkBlue16)),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Text("""
+● High level communicator, comfortable working with stakeholders, design teams, QA teams, product teams, etc.
+● Expert programming skills in a major languages such as Dart, SQl, C++, Java, JavaScript
+● Experience working with internally and externally developed projects with a large code base and excellent with Git
+● Familiarity with advanced computer science concepts including design patterns and algorithms (Big Fan of Uncle Bob)
+● Mastery of the Dart (Flutter) development and hardware ecosystem from virtual  device to store: Google Play or Apple.
+""", style: aDarkBlue16),
+                        ),
+                        Container(width: 16),
+                        Flexible(
+                          child: Text("""
+● Experience with Android Guidelines, Certificates, Provisioning, and Play store submission
+● Experience with Apple Guidelines, Certificates, Provisioning, and App store submission
+● Extensive experience in backend functionality using web RESTful/JSON web services
+● Experience building complex apps that have been successfully delivered to customers
+● Good team player who is self motivated and well organized
+● A strong technical background, including hands-on native Android experience
+● Exceptional analytical aptitude and attention to detail
+""", style: aDarkBlue16),
+                        )
+                      ],
+                    )
               ])),
           Padding(
             padding: const EdgeInsets.only(top: 32.0),

@@ -25,21 +25,19 @@ class HireMePage extends StatelessWidget {
             "details on your project and I’ll get back to you within 24 hours.",
         callToAction: "Reach Out",
         onTap: () {
-          final appState = AppState.of(context);
-          appState.rootNavigatorState.pushNamed(HireMeDialog.routeName);
+          router.navigateTo(context, HireMeDialog.routeName);
         },
         backgroundIconPath: "assets/images/hand-shake.png",
       ),
       _HireMeCard(
         title: "General Inquiry",
         description:
-        "Feel free to reach out if you have any questions or comments "
+            "Feel free to reach out if you have any questions or comments "
             "about the services I offer. I also always appreciate a friendly "
             "hello. So tap that button but below and send away.",
         callToAction: "Send Inquiry",
         onTap: () {
-          final appState = AppState.of(context);
-          appState.rootNavigatorState.pushNamed(GeneralInquiryDialog.routeName);
+          router.navigateTo(context, GeneralInquiryDialog.routeName);
         },
         backgroundIconPath: "assets/images/inquiry.png",
       ),

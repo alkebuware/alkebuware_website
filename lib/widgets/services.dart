@@ -75,7 +75,6 @@ class ServiceText extends StatelessWidget {
     return Text(
       buffer.toString(),
       style: serviceBlue12Bold,
-      softWrap: true,
       textAlign: TextAlign.end,
     );
   }

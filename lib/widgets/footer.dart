@@ -125,7 +125,6 @@ class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appState = AppState.of(context);
     return Padding(
       padding: const EdgeInsets.only(bottom: 32),
       child: RoundedButton(
@@ -133,9 +132,7 @@ class _Button extends StatelessWidget {
         text: text,
         textStyle: titleWhite24,
         onTap: () {
-          appState.appBarNavigatorState.pushNamed(routeName);
-          // ignore: invalid_use_of_protected_member
-          AppState.of(context).appBarState.setState(() {});
+          router.navigateTo(context, routeName);
         },
       ),
     );

@@ -45,18 +45,20 @@ class NavigationButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appState = AppState.of(context);
-    return RoundedButton(
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 24),
-      text: text,
-      textStyle: titleWhite36Bold,
-      backgroundColor: appState.currentRoute == routeName
-          ? Colors.white12
-          : Colors.transparent,
-      onTap: () {
-        Navigator.pop(context);
-        appState.appBarNavigatorState.pushNamed(routeName);
-      },
-    );
+    return StreamBuilder<String>(
+        stream: observer.currentRouteStream,
+        builder: (context, snapshot) {
+          return RoundedButton(
+            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 24),
+            text: text,
+            textStyle: titleWhite36Bold,
+            backgroundColor: snapshot.data == routeName
+                ? Colors.white12
+                : Colors.transparent,
+            onTap: () {
+              router.navigateTo(context, routeName);
+            },
+          );
+        });
   }
 }

@@ -10,22 +10,27 @@ class ServicesInquiryDialog extends StatefulWidget {
   static const String routeName = "/services-inquiry";
 
   @override
-  _ServicesInquiryDialogState createState() => _ServicesInquiryDialogState();
+  ServicesInquiryDialogState createState() => ServicesInquiryDialogState();
 }
 
-class _ServicesInquiryDialogState extends State<ServicesInquiryDialog> {
+class ServicesInquiryDialogState extends State<ServicesInquiryDialog> {
   final _formKey = GlobalKey<FormState>();
   String _name;
   String _email;
   String _inquiry;
-  String _title;
+  static String title;
   bool _sendSucceeded = false;
 
   @override
+  void dispose() {
+    title = null;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    _title = (ModalRoute.of(context).settings.arguments as Map)["title"];
     return ADialog(
-      title: _title,
+      title: title,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Form(
@@ -85,7 +90,7 @@ class _ServicesInquiryDialogState extends State<ServicesInquiryDialog> {
                           },
                           formKey: _formKey,
                           formData: () => {
-                            "title": _title,
+                            "title": title,
                             "name": _name,
                             "email": _email,
                             "inquiry": _inquiry,

@@ -6,7 +6,6 @@ import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/footer.dart';
 import 'package:alkebuware_website/widgets/page_view.dart';
 import 'package:alkebuware_website/widgets/rounded_button.dart';
-import 'package:alkebuware_website/widgets/scrollbar.dart';
 import 'package:alkebuware_website/widgets/squared_button.dart';
 import 'package:alkebuware_website/widgets/testimonials.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();
@@ -116,9 +114,8 @@ class _HomePageState extends State<HomePage> {
                                     textStyle: white20Medium,
                                     backgroundColor: aOrange,
                                     onTap: () {
-                                      final appState = AppState.of(context);
-                                      appState.rootNavigatorState
-                                          .pushNamed(HireMeDialog.routeName);
+                                      router.navigateTo(
+                                          context, HireMeDialog.routeName);
                                     },
                                   ),
                                 ),
@@ -160,9 +157,7 @@ class _HomePageState extends State<HomePage> {
                           textStyle: white20Medium,
                           backgroundColor: aOrange,
                           onTap: () {
-                            final appState = AppState.of(context);
-                            appState.rootNavigatorState
-                                .pushNamed(HireMeDialog.routeName);
+                            router.navigateTo(context, HireMeDialog.routeName);
                           },
                         ),
                       ),
@@ -189,10 +184,7 @@ class _HomePageState extends State<HomePage> {
                         Text("My Work", style: titleADarkBlue24Bold),
                         InkWell(
                           onTap: () {
-                            final appBarNavigationState =
-                                AppState.of(context).appBarNavigatorState;
-                            appBarNavigationState
-                                .pushNamed(PortfolioPage.routeName);
+                            router.navigateTo(context, PortfolioPage.routeName);
                           },
                           child: Row(children: [
                             Text("View portfolio", style: aLightBlue16),
@@ -224,11 +216,8 @@ class _HomePageState extends State<HomePage> {
                                 RoundedButton(
                                     backgroundColor: aOrange,
                                     onTap: () {
-                                      final appBarNavigationState =
-                                          AppState.of(context)
-                                              .appBarNavigatorState;
-                                      appBarNavigationState
-                                          .pushNamed(HireMePage.routeName);
+                                      router.navigateTo(
+                                          context, HireMePage.routeName);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(

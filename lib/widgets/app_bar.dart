@@ -15,12 +15,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import 'current_route_builder.dart';
 import 'rounded_button.dart';
 
 class AAppBar extends StatefulWidget implements PreferredSizeWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
-
-  const AAppBar({Key key, this.navigatorKey}) : super(key: key);
+  const AAppBar({Key key}) : super(key: key);
 
   @override
   _AAppBarState createState() => _AAppBarState();
@@ -33,23 +32,14 @@ class _AAppBarState extends State<AAppBar> {
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
-      mobile: _MobileAAppbar(
-        navigatorKey: widget.navigatorKey,
-      ),
-      tablet: _MobileAAppbar(
-        navigatorKey: widget.navigatorKey,
-      ),
-      desktop: _TabletAAppbar(
-        navigatorKey: widget.navigatorKey,
-      ),
+      mobile: _MobileAAppbar(),
+      desktop: _TabletAAppbar(),
     );
   }
 }
 
 class _TabletAAppbar extends StatefulWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
-
-  const _TabletAAppbar({Key key, this.navigatorKey}) : super(key: key);
+  const _TabletAAppbar({Key key}) : super(key: key);
 
   @override
   __TabletAAppbarState createState() => __TabletAAppbarState();
@@ -77,12 +67,8 @@ class __TabletAAppbarState extends State<_TabletAAppbar> {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      if (AppState.of(context).currentRoute !=
-                          HomePage.routeName) {
-                        AppState.of(context)
-                            .appBarNavigatorState
-                            .pushNamed(HomePage.routeName);
-                        setState(() {});
+                      if (observer.currentRoute != HomePage.routeName) {
+                        router.navigateTo(context, HomePage.routeName);
                       }
                     },
                     splashColor: Colors.white24,
@@ -96,21 +82,21 @@ class __TabletAAppbarState extends State<_TabletAAppbar> {
                 ),
               ),
             ),
-            _NavigationButton(
+            _TabletNavigationButton(
                 state: this, routeName: HomePage.routeName, text: "Home"),
-            _NavigationButton(
+            _TabletNavigationButton(
                 state: this, routeName: HireMePage.routeName, text: "Hire me"),
-            _NavigationButton(
+            _TabletNavigationButton(
                 state: this,
                 routeName: PortfolioPage.routeName,
                 text: "Portfolio"),
-            _NavigationButton(
+            _TabletNavigationButton(
                 state: this,
                 routeName: ServicesPage.routeName,
                 text: "Services"),
-            _NavigationButton(
+            _TabletNavigationButton(
                 state: this, routeName: AboutPage.routeName, text: "About"),
-            _NavigationButton(
+            _TabletNavigationButton(
                 state: this, routeName: ResumePage.routeName, text: "Resume"),
             LetsChatButton(),
           ]),
@@ -121,9 +107,7 @@ class __TabletAAppbarState extends State<_TabletAAppbar> {
 }
 
 class _MobileAAppbar extends StatelessWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
-
-  const _MobileAAppbar({Key key, this.navigatorKey}) : super(key: key);
+  const _MobileAAppbar({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -146,12 +130,8 @@ class _MobileAAppbar extends StatelessWidget {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      if (AppState.of(context).currentRoute !=
-                          HomePage.routeName) {
-                        AppState
-                            .of(context)
-                            .appBarNavigatorState
-                            .pushNamed(HomePage.routeName);
+                      if (observer.currentRoute != HomePage.routeName) {
+                        router.navigateTo(context, HomePage.routeName);
                       }
                     },
                     splashColor: Colors.white24,
@@ -184,37 +164,36 @@ class LetsChatButton extends StatelessWidget {
         text: "Let's Chat 😀",
         textStyle: aOrange14Medium,
         onTap: () {
-          final appState = AppState.of(context);
-          appState.rootNavigatorState.pushNamed(GeneralInquiryDialog.routeName);
+          router.navigateTo(context, GeneralInquiryDialog.routeName);
         },
       ),
     );
   }
 }
 
-
-class _NavigationButton extends StatelessWidget {
+class _TabletNavigationButton extends StatelessWidget {
   final String routeName;
   final String text;
   final State state;
 
-  const _NavigationButton(
+  const _TabletNavigationButton(
       {Key key, @required this.routeName, @required this.text, this.state})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final appState = AppState.of(context);
-    return SquaredButton(
-      backgroundColor: Colors.transparent,
-      text: text,
-      onTap: () {
-        appState.appBarNavigatorState.pushNamed(routeName);
-        // ignore: invalid_use_of_protected_member
-        state.setState(() {});
-      },
-      textStyle: appState.currentRoute == routeName ? white16 : white5416,
-    );
+    return CurrentRouteBuilder(builder: (context, routeName) {
+      print("builder: $routeName");
+      return SquaredButton(
+        backgroundColor: Colors.transparent,
+        text: text,
+        onTap: () {
+          print("tablet button");
+          router.navigateTo(context, this.routeName);
+        },
+        textStyle: routeName == this.routeName ? white16 : white5416,
+      );
+    });
   }
 }
 
@@ -230,7 +209,7 @@ class _MenuButton extends StatelessWidget {
           highlightColor: Colors.white24,
           borderRadius: BorderRadius.circular(100),
           onTap: () {
-            Navigator.pushNamed(context, MenuDialog.routeName);
+            router.navigateTo(context, MenuDialog.routeName);
           },
           child: Column(
             children: <Widget>[

@@ -73,17 +73,19 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      ServiceIcons(
-                        services: product.services,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: ServiceText(services: product.services),
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        ServiceIcons(
+                          services: product.services,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: ServiceText(services: product.services),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -126,8 +128,8 @@ class ProductCard extends StatelessWidget {
                           backgroundColor: aOrange,
                           text: "View Details",
                           onTap: () {
-                            final appState = AppState.of(context);
-                            appState.appBarNavigatorState.pushNamed(
+                            router.navigateTo(
+                                context,
                                 PortfolioDetailPage.routeName(
                                     allProducts.indexOf(product).toString()));
                           },
