@@ -51,7 +51,7 @@ class AppState extends State<App> {
     return CupertinoApp(
       navigatorObservers: [observer],
       navigatorKey: _navigatorKey,
-      title: 'Alkebuware - Let\'s Build Something Great',
+      title: 'ALKEBUWARE - Let\'s Build Something Great',
       onGenerateRoute: router.generator,
       localizationsDelegates: [DefaultMaterialLocalizations.delegate],
     );

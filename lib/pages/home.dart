@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/dimensions.dart';
 import 'package:alkebuware_website/main.dart';
@@ -23,9 +25,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  double _desktopBackgroundHeight = 0;
+  final _backgroundImageKey = GlobalKey();
+  final _heroKey = GlobalKey();
+
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPersistentFrameCallback((_) {
+      if (mounted &&
+          _backgroundImageKey.currentContext != null &&
+          _heroKey.currentContext != null) {
+        setState(() {
+          _desktopBackgroundHeight = max(
+              _backgroundImageKey.currentContext.size.height -
+                  _heroKey.currentContext.size.height,
+              0);
+          print("height: $_desktopBackgroundHeight");
+        });
+      }
+    });
   }
 
   @override
@@ -34,7 +53,9 @@ class _HomePageState extends State<HomePage> {
       children: [
         ScreenTypeLayout(
             desktop: Image.asset("assets/images/home-background.png",
-                width: getScreenWidth(context), fit: BoxFit.fitWidth),
+                key: _backgroundImageKey,
+                width: getScreenWidth(context),
+                fit: BoxFit.fitWidth),
             mobile: Image.asset(
               "assets/images/home-background.png",
               height: 1000,
@@ -79,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                 constraints: BoxConstraints(maxWidth: 1024),
                 child: Column(children: [
                   ScreenTypeLayout(
+                    key: _heroKey,
                     desktop: Padding(
                       padding: const EdgeInsets.only(top: 100.0),
                       child: Row(
@@ -176,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                             context: context,
                             mobile: 32,
                             tablet: 32,
-                            desktop: getScreenWidth(context) * .2),
+                            desktop: _desktopBackgroundHeight + 32),
                         bottom: 32),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -224,13 +246,13 @@ class _HomePageState extends State<HomePage> {
                                           vertical: 4, horizontal: 16),
                                       child: Row(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 right: 16.0),
                                             child:
-                                                Text("Hire me", style: white24),
+                                            Text("Hire me", style: white24),
                                           ),
                                           Icon(
                                             Icons.chevron_right,
