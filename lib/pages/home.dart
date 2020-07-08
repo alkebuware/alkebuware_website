@@ -32,7 +32,11 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPersistentFrameCallback((_) {
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted &&
           _backgroundImageKey.currentContext != null &&
           _heroKey.currentContext != null) {
@@ -41,14 +45,9 @@ class _HomePageState extends State<HomePage> {
               _backgroundImageKey.currentContext.size.height -
                   _heroKey.currentContext.size.height,
               0);
-          print("height: $_desktopBackgroundHeight");
         });
       }
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Stack(
       children: [
         ScreenTypeLayout(
