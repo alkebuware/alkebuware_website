@@ -47,7 +47,6 @@ class _SendButtonState extends State<SendButton> {
           widget.formKey.currentState.save();
           setState(() => _inProgress = true);
           try {
-            print("formData: ${widget.formData()}");
             final response = await (MultipartRequest(
                     "POST", Uri.parse("https://formspree.io/mzbjgkao"))
                   ..followRedirects = false

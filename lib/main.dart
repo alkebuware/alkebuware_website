@@ -4,9 +4,9 @@ import 'package:alkebuware_website/pages/hire_me_dialog.dart';
 import 'package:alkebuware_website/pages/menu_dialog.dart';
 import 'package:alkebuware_website/widgets/page.dart';
 import 'package:fluro_fork/fluro_fork.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart' hide Router;
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Router;
 import 'package:sentry/sentry.dart';
 
 import 'pages/about.dart';
@@ -51,7 +51,7 @@ class AppState extends State<App> {
     return CupertinoApp(
       navigatorObservers: [observer],
       navigatorKey: _navigatorKey,
-      title: 'ALKEBUWARE - Let\'s Build Something Great',
+      title: 'ALKEBUWARE | Let\'s Build Something Amazing',
       onGenerateRoute: router.generator,
       localizationsDelegates: [DefaultMaterialLocalizations.delegate],
     );
@@ -336,7 +336,6 @@ class AObserver extends NavigatorObserver {
 
   @override
   void didPush(Route route, Route previousRoute) {
-    print("push: ${route?.settings?.name} ${previousRoute?.settings?.name}");
     super.didPush(route, previousRoute);
     _currentRoute = route.settings.name;
     _controllers.forEach((controller) {
@@ -346,7 +345,6 @@ class AObserver extends NavigatorObserver {
 
   @override
   void didPop(Route route, Route previousRoute) {
-    print("pop: ${route?.settings?.name}, ${previousRoute?.settings?.name}");
     super.didPop(route, previousRoute);
     _currentRoute = previousRoute?.settings?.name;
     _controllers.forEach((controller) {

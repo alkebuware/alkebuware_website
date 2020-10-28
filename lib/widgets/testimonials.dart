@@ -52,7 +52,7 @@ class __MobileState extends State<_Mobile> {
     return Column(
       children: <Widget>[
         Container(
-          constraints: BoxConstraints(maxHeight: 350, maxWidth: 500),
+          constraints: BoxConstraints(maxHeight: 400, maxWidth: 500),
           child: PageView(
             controller: _controller,
             children: allTestimonials

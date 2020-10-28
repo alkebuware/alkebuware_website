@@ -1,4 +1,3 @@
-import 'package:alkebuware_website/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class AContainer extends StatelessWidget {

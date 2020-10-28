@@ -20,6 +20,16 @@ final List<Testimonial> allTestimonials = const [
           "really knows what they're doing and doesn't mind including you "
           "throughout the process so you'll know (and be able to see) what's going "
           "on every step of the way."),
+  const Testimonial(
+      name: "Sandeep P.",
+      services: [Service.uiDesign, Service.appDevelopment],
+      assetName: "assets/images/sandeep.jpeg",
+      company: "CESC IP Holdings, LLC",
+      position: "Software Application Developer",
+      text: "I worked with Tariq on developing an app for us. He is a very "
+          "good person with strong problem-solving skills, talented and a "
+          "great communicator. I have had the pleasure of working with him and "
+          "I'd highly recommend Tariq for any app development."),
 ];
 
 class Testimonial {

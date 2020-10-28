@@ -220,8 +220,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ProductPageView(assetPaths: [
                     "assets/images/boss-cuts-home.png",
+                    "assets/images/companions-forever-shifts.png",
                     "assets/images/tceshop-product-detail.png",
-                    "assets/images/alosha-profile.png"
                   ]),
                   Padding(
                       padding: const EdgeInsets.only(top: 64),

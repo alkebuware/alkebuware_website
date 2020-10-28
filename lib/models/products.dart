@@ -63,26 +63,32 @@ final List<Product> allProducts = [
         "the app per their specification and launched the iOS and Android apps "
         "to their respective stores over the span of 6 weeks.",
   ),
-//  Product(
-//    name: "Companions Forever",
-//    services: [Service.uiDesign, Service.appDevelopment],
-//    color: Color(0xFF36AAD0),
-//    iconBackgroundColor: Colors.white,
-//    assetIconName: "assets/images/companions-forever-icon.png",
-//    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
-//        "sollicitudin eleifend lacus, et pretium elit varius ut. Aenean gravida"
-//        " facilisis sem, nec tristique ipsum finibus sed. Mauris consectetur ",
-//    detail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut "
-//        "sollicitudin eleifend lacus, et pretium elit varius ut. Aenean gravida"
-//        " facilisis sem, nec tristique ipsum finibus sed. Mauris consectetur ni"
-//        "sl eros, ut ultrices magna pharetra nec. Mauris massa nisl, viverra ve"
-//        "l condimentum id, tincidunt nec magna. Nullam ut semper nisi. Nulla vi"
-//        "verra est sagittis odio cursus egestas. Quisque imperdiet purus est, e"
-//        "get tempus ante molestie non. Maecenas quis dignissim est. Sed hendrer"
-//        "it purus eu nulla facilisis tristique. Nulla massa neque, cursus susci"
-//        "pit luctus vel, efficitur ut diam. Mauris molestie ligula a lacus elei"
-//        "fend, sit amet vestibulum libero porttitor.",
-//  ),
+  Product(
+    name: "Companions Forever",
+    services: [Service.uiDesign, Service.appDevelopment],
+    color: Color(0xFF36AAD0),
+    iconBackgroundColor: Colors.white,
+    assetIconName: "assets/images/companions-forever-icon.png",
+    deviceArt: [
+      "assets/images/companions-forever-login.png",
+      "assets/images/companions-forever-notifications.png",
+      "assets/images/companions-forever-rewards.png",
+      "assets/images/companions-forever-rewards-history.png",
+      "assets/images/companions-forever-schedule.png",
+      "assets/images/companions-forever-shifts.png",
+    ],
+    summary: "Companions Forever is a home care services provider based in "
+        "Greater Hartford and New Haven counties of Connecticut. To improve "
+        "the value of their services they wanted a mobile app created for "
+        "their caregivers and customers.",
+    detail: "Companions Forever is a home care services provider based in "
+        "Greater Hartford and New Haven counties of Connecticut. To improve "
+        "the value of their services they wanted a mobile app created for "
+        "their caregivers and customers. Working with the company we were able "
+        "to design and develop an app that allows their caregivers to set "
+        "their hours and track their wages; and give their customers the "
+        "easy capability of setting the plan of care for their loved ones.",
+  ),
   Product(
     name: "The Cultural Exchange Shop",
     services: [

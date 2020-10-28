@@ -48,6 +48,7 @@ flutter:
     - assets/images/tceshop-product-detail.png
     - assets/images/zakiyah-acosta.jpg
     - assets/images/josh-york.jpg
+    - assets/images/sandeep.jpeg
     - assets/images/app-development.png
     - assets/images/web-development.png
     - assets/images/ui-design.png
@@ -55,6 +56,12 @@ flutter:
     - assets/images/alosha-icon.png
     - assets/images/boss-cuts-icon.png
     - assets/images/companions-forever-icon.png
+    - assets/images/companions-forever-login.png
+    - assets/images/companions-forever-notifications.png
+    - assets/images/companions-forever-rewards.png
+    - assets/images/companions-forever-rewards-history.png
+    - assets/images/companions-forever-schedule.png
+    - assets/images/companions-forever-shifts.png
     - assets/images/tce-shop-icon.png
     - assets/images/alosha-home.png
     - assets/images/alosha-product-detail.png

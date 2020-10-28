@@ -20,7 +20,6 @@ class S implements WidgetsLocalizations {
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
-
 }
 
 class $en extends S {
@@ -123,8 +122,9 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   }
 }
 
-String getLang(Locale l) => l == null
-    ? null
-    : l.countryCode != null && l.countryCode.isEmpty
-    ? l.languageCode
-    : l.toString();
+String getLang(Locale l) =>
+    l == null
+        ? null
+        : l.countryCode != null && l.countryCode.isEmpty
+        ? l.languageCode
+        : l.toString();

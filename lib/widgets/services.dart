@@ -33,9 +33,7 @@ class ServiceIcons extends StatelessWidget {
 
         if (image != null) {
           return Padding(
-            padding: isMiddle
-                ? EdgeInsets.symmetric(horizontal: 8)
-                : EdgeInsets.all(0),
+            padding: EdgeInsets.only(right: 8),
             child: image,
           );
         } else {

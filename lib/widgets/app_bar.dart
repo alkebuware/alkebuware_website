@@ -183,12 +183,10 @@ class _TabletNavigationButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CurrentRouteBuilder(builder: (context, routeName) {
-      print("builder: $routeName");
       return SquaredButton(
         backgroundColor: Colors.transparent,
         text: text,
         onTap: () {
-          print("tablet button");
           router.navigateTo(context, this.routeName);
         },
         textStyle: routeName == this.routeName ? white16 : white5416,
