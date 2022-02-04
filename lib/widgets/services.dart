@@ -17,7 +17,6 @@ class ServiceIcons extends StatelessWidget {
     return Row(
       mainAxisAlignment: mainAxisAlignment,
       children: services.map((s) {
-        final bool isMiddle = services.last != s && services.first != s;
         Image image;
         switch (s) {
           case Service.uiDesign:

@@ -5,7 +5,6 @@ import 'package:alkebuware_website/pages/menu_dialog.dart';
 import 'package:alkebuware_website/widgets/page.dart';
 import 'package:fluro_fork/fluro_fork.dart';
 import 'package:flutter/cupertino.dart' hide Router;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:sentry/sentry.dart';
 
@@ -23,7 +22,7 @@ final SentryClient sentry = SentryClient(
     dsn:
         "https://43456dfe4c6e4ac09723030b960588c0@o365045.ingest.sentry.io/5275606");
 
-void main() => runZoned(() => runApp(App()), onError: (error, stackTrace) {
+void main() => runZonedGuarded(() => runApp(App()), (error, stackTrace) {
       try {
         sentry.captureException(exception: error, stackTrace: stackTrace);
         print(error);
@@ -135,10 +134,10 @@ class ARouter extends Router {
   @override
   Future navigateTo(BuildContext context, String path,
       {bool replace = false,
-        bool clearStack = false,
-        TransitionType transition,
-        Duration transitionDuration = const Duration(milliseconds: 250),
-        transitionBuilder}) {
+      bool clearStack = false,
+      TransitionType transition,
+      Duration transitionDuration = const Duration(milliseconds: 250),
+      transitionBuilder}) {
     RouteMatch routeMatch = matchRoute(context, path,
         transitionType: transition,
         transitionsBuilder: transitionBuilder,
@@ -155,14 +154,14 @@ class ARouter extends Router {
       if (route != null) {
         if (clearStack) {
           future = navigatorKey?.currentState
-              ?.pushAndRemoveUntil(route, (route) => false) ??
+                  ?.pushAndRemoveUntil(route, (route) => false) ??
               Navigator.pushAndRemoveUntil(context, route, (check) => false);
         } else {
           future = replace
               ? (navigatorKey?.currentState?.pushReplacement(route) ??
-              Navigator.pushReplacement(context, route))
+                  Navigator.pushReplacement(context, route))
               : (navigatorKey?.currentState?.push(route) ??
-              Navigator.push(context, route));
+                  Navigator.push(context, route));
         }
         completer.complete();
       } else {
@@ -184,9 +183,9 @@ class ARouter extends Router {
   ///
   RouteMatch matchRoute(BuildContext buildContext, String path,
       {RouteSettings routeSettings,
-        TransitionType transitionType,
-        Duration transitionDuration = const Duration(milliseconds: 250),
-        RouteTransitionsBuilder transitionsBuilder}) {
+      TransitionType transitionType,
+      Duration transitionDuration = const Duration(milliseconds: 250),
+      RouteTransitionsBuilder transitionsBuilder}) {
     RouteSettings settingsToUse = routeSettings;
     if (routeSettings == null) {
       settingsToUse = RouteSettings(name: path);
@@ -215,9 +214,7 @@ class ARouter extends Router {
       bool isNativeTransition = (transition == TransitionType.native ||
           transition == TransitionType.nativeModal);
       if (isNativeTransition) {
-        if (Theme
-            .of(buildContext)
-            .platform == TargetPlatform.iOS) {
+        if (Theme.of(buildContext).platform == TargetPlatform.iOS) {
           return CupertinoPageRoute<dynamic>(
               settings: routeSettings,
               fullscreenDialog: transition == TransitionType.nativeModal,
@@ -237,7 +234,7 @@ class ARouter extends Router {
         return MaterialPageRoute<dynamic>(
             settings: routeSettings,
             fullscreenDialog:
-            transition == TransitionType.materialFullScreenDialog,
+                transition == TransitionType.materialFullScreenDialog,
             builder: (BuildContext context) {
               return handler.handlerFunc(context, parameters);
             });
@@ -246,7 +243,7 @@ class ARouter extends Router {
         return CupertinoPageRoute<dynamic>(
             settings: routeSettings,
             fullscreenDialog:
-            transition == TransitionType.cupertinoFullScreenDialog,
+                transition == TransitionType.cupertinoFullScreenDialog,
             builder: (BuildContext context) {
               return handler.handlerFunc(context, parameters);
             });

@@ -7,7 +7,6 @@ import 'package:alkebuware_website/widgets/footer.dart';
 import 'package:alkebuware_website/widgets/squared_button.dart';
 import 'package:alkebuware_website/widgets/testimonials.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HireMePage extends StatelessWidget {
   static final String routeName = "/hire-me";

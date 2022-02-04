@@ -76,7 +76,7 @@ class _SendButtonState extends State<SendButton> {
   }
 
   void _onError() {
-    final scaffoldState = Scaffold.of(context);
+    final scaffoldState = ScaffoldMessenger.of(context);
     scaffoldState.showSnackBar(SnackBar(
       content: Text("Unable to send. Please try again later"),
     ));

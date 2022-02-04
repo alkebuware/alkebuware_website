@@ -3,9 +3,7 @@ import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/container.dart';
 import 'package:alkebuware_website/widgets/footer.dart';
 import 'package:alkebuware_website/widgets/thumbnail_viewer.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ResumePage extends StatelessWidget {

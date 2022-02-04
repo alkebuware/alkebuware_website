@@ -11,7 +11,6 @@ import 'package:alkebuware_website/pages/resume.dart';
 import 'package:alkebuware_website/pages/services.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/squared_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 

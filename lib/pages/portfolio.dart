@@ -6,7 +6,6 @@ import 'package:alkebuware_website/widgets/footer.dart';
 import 'package:alkebuware_website/widgets/services.dart';
 import 'package:alkebuware_website/widgets/squared_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'portfolio_detail.dart';
@@ -114,7 +113,7 @@ class ProductCard extends StatelessWidget {
                         if (product.websiteUrl != null)
                           Padding(
                             padding: const EdgeInsets.only(bottom: 16),
-                            child: FlatButton(
+                            child: TextButton(
                                 child: Text("View App Website",
                                     style: aDarkBlue20Medium),
                                 onPressed: () async {

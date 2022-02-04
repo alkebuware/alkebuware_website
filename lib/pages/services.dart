@@ -5,7 +5,6 @@ import 'package:alkebuware_website/widgets/container.dart';
 import 'package:alkebuware_website/widgets/footer.dart';
 import 'package:alkebuware_website/widgets/squared_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import 'services_inquiry_dialog.dart';

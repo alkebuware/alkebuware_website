@@ -2,7 +2,6 @@ import 'package:alkebuware_website/widgets/dialog.dart';
 import 'package:alkebuware_website/widgets/send_button.dart';
 import 'package:alkebuware_website/widgets/send_success.dart';
 import 'package:alkebuware_website/widgets/text_form_field.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
 
