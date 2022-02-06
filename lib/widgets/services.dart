@@ -28,6 +28,9 @@ class ServiceIcons extends StatelessWidget {
           case Service.webDevelopment:
             image = Image.asset("assets/images/web-development.png");
             break;
+          case Service.windowsDevelopment:
+            image = Image.asset("assets/images/windows-development.png");
+            break;
         }
 
         if (image != null) {
@@ -66,6 +69,9 @@ class ServiceText extends StatelessWidget {
           break;
         case Service.webDevelopment:
           buffer.write("Web Development");
+          break;
+        case Service.windowsDevelopment:
+          buffer.write("Windows Development");
           break;
       }
     }

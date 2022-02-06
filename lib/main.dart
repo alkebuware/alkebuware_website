@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:alkebuware_website/pages/hire_me_dialog.dart';
 import 'package:alkebuware_website/pages/menu_dialog.dart';
+import 'package:alkebuware_website/pages/testimonial_dialog.dart';
 import 'package:alkebuware_website/widgets/page.dart';
 import 'package:fluro_fork/fluro_fork.dart';
 import 'package:flutter/cupertino.dart' hide Router;
@@ -47,7 +48,7 @@ class AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
+    return  CupertinoApp(
       navigatorObservers: [observer],
       navigatorKey: _navigatorKey,
       title: 'ALKEBUWARE | Let\'s Build Something Amazing',
@@ -61,6 +62,10 @@ final _navigatorKey = GlobalKey<NavigatorState>();
 final router = ARouter(navigatorKey: _navigatorKey)
   ..define(MenuDialog.routeName, handler: Handler(handlerFunc: (_, __) {
     return MenuDialog();
+  }))
+  ..define(TestimonialDialog.routeName(":id"),
+      handler: Handler(handlerFunc: (_, __) {
+    return TestimonialDialog();
   }))
   ..define(HireMeDialog.routeName, opaque: false,
       handler: Handler(handlerFunc: (_, __) {

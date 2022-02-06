@@ -9,8 +9,15 @@ import 'package:responsive_builder/responsive_builder.dart';
 class ADialog extends StatelessWidget {
   final Widget child;
   final String title;
+  final Color backgroundColor;
+  final TextStyle titleTextStyle;
 
-  const ADialog({Key key, @required this.child, @required this.title})
+  const ADialog(
+      {Key key,
+      @required this.child,
+      @required this.title,
+      this.backgroundColor,
+      this.titleTextStyle = titleWhite36Bold})
       : super(key: key);
 
   @override
@@ -45,7 +52,8 @@ class ADialog extends StatelessWidget {
               tablet: getScreenWidth(context),
               desktop: null),
           decoration: BoxDecoration(
-              gradient: lightBlueGradient,
+              color: backgroundColor,
+              gradient: backgroundColor == null ? lightBlueGradient : null,
               borderRadius: BorderRadius.circular(getValueForScreenType(
                   context: context, mobile: 0, tablet: 0, desktop: 16))),
           child: Column(
@@ -58,7 +66,7 @@ class ADialog extends StatelessWidget {
                         BoxConstraints(maxWidth: getScreenWidth(context) - 80),
                     child: Text(
                       title,
-                      style: titleWhite36Bold,
+                      style: titleTextStyle,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
@@ -66,7 +74,9 @@ class ADialog extends StatelessWidget {
                   Material(
                     color: Colors.transparent,
                     child: IconButton(
-                        icon: Image.asset("assets/images/close.png"),
+                        icon: titleTextStyle.color == Colors.white
+                            ? Image.asset("assets/images/close.png")
+                            : Image.asset("assets/images/close-dark-blue.png"),
                         onPressed: () {
                           router.pop(context);
                         }),
@@ -107,7 +117,6 @@ class NavigationButton extends StatelessWidget {
               router.navigateTo(context, routeName);
             },
           );
-        }
-    );
+        });
   }
 }

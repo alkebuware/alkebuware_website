@@ -2,6 +2,47 @@ import 'package:meta/meta.dart';
 
 final List<Testimonial> allTestimonials = const [
   const Testimonial(
+      name: "Ben D.",
+      services: [Service.webDevelopment, Service.appDevelopment],
+      assetName: "assets/images/ben-depew.png",
+      company: "ROAD iD",
+      position: "Director of IT",
+      text: "Tariq crushed this project. Fantastic Developer. In addition to "
+          "his strong developer chops, he's also a great communicator. He's "
+          "organized, moves fast, communicates early and often. I plan to hire "
+          "him for all of my mobile development needs moving forward."),
+  const Testimonial(
+      name: "Nephi H.",
+      services: [Service.uiDesign, Service.appDevelopment, Service.windowsDevelopment],
+      assetName: "assets/images/nephi-harvey.jpeg",
+      company: "Fort Supply Technologies, LLC",
+      position: "CTO",
+      text: "Tariq has worked with Fort Supply Technologies, LLC as a contract "
+          "developer since March 2021 to develop novel solutions for the "
+          "animal food safety industry.  His skills have proven exceptional in "
+          "figuring out how to implement software solutions for our essential "
+          "industry in difficult times.  He is an excellent communicator from "
+          "design to deployment using Flutter and other related development "
+          "tools. When presented with roadblocks he focuses on quickly and "
+          "efficiently implementing permanent solutions.  I would recommend "
+          "Tariq for anyone needing to explore, design and implement mobile "
+          "software solutions."),
+  const Testimonial(
+      name: "Jordan P.",
+      services: [Service.uiDesign, Service.appDevelopment],
+      assetName: "assets/images/jordan-poulsen.jpg",
+      company: "DECK",
+      position: "Founder",
+      text: "Tariq was amazing to work with. He really knows what he is "
+          "talking about and was great at explaining things to me, someone who "
+          "really knows nothing about all this. He was always able to provide "
+          "solutions to problems that might have come up and provide "
+          "suggestions when I had certain requests. He communicated with me on "
+          "a regular basis and I was always aware of how things were "
+          "progressing. I would love to work with Tariq again in the future "
+          "and would recommend him to anyone looking for app development "
+          "services."),
+  const Testimonial(
       name: "Josh Y.",
       services: [Service.appDevelopment],
       assetName: "assets/images/josh-york.jpg",
@@ -10,16 +51,6 @@ final List<Testimonial> allTestimonials = const [
       text: "Tariq did an excellent job developing an app for us. He was "
           "professional and a great communicator. I would hire him with no "
           "question for other projects."),
-  const Testimonial(
-      name: "Zakiyah A.",
-      services: [Service.uiDesign],
-      assetName: "assets/images/zakiyah-acosta.jpg",
-      company: "Zakiyah & Co.",
-      position: "Founder",
-      text: "I highly recommend Tariq if you're looking for a designer who "
-          "really knows what they're doing and doesn't mind including you "
-          "throughout the process so you'll know (and be able to see) what's going "
-          "on every step of the way."),
   const Testimonial(
       name: "Sandeep P.",
       services: [Service.uiDesign, Service.appDevelopment],
@@ -53,4 +84,5 @@ enum Service {
   uiDesign,
   appDevelopment,
   webDevelopment,
+  windowsDevelopment
 }

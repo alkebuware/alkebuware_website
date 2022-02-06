@@ -1,6 +1,11 @@
+import 'dart:math';
+
 import 'package:alkebuware_website/colors.dart';
+import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/models/testimonials.dart';
+import 'package:alkebuware_website/pages/testimonial_dialog.dart';
 import 'package:alkebuware_website/text.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -8,25 +13,42 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'services.dart';
 
 class Testimonials extends StatelessWidget {
+  final int limit;
+
+  const Testimonials({Key key, this.limit}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout(
       mobile: _Mobile(),
       tablet: _Mobile(),
-      desktop: _Desktop(),
+      desktop: _Desktop(limit: limit),
     );
   }
 }
 
 class _Desktop extends StatelessWidget {
+  final int limit;
+
+  const _Desktop({Key key, this.limit}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final columns = List.generate(3, (index) => <Widget>[]);
+    int i = 0;
+    for (final testimonial
+        in allTestimonials.take(limit ?? allTestimonials.length)) {
+      columns[i++ % 3].add(Flexible(
+          child: TestimonialCard(testimonial: testimonial, shrinkWrap: true)));
+    }
     return Container(
       constraints: BoxConstraints(maxWidth: 1024),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: allTestimonials
-            .map((t) => Flexible(child: TestimonialCard(testimonial: t)))
+        children: columns
+            .map((children) => Flexible(
+                child:
+                    Column(mainAxisSize: MainAxisSize.min, children: children)))
             .toList(),
       ),
     );
@@ -75,8 +97,10 @@ class __MobileState extends State<_Mobile> {
 
 class TestimonialCard extends StatelessWidget {
   final Testimonial testimonial;
+  final bool shrinkWrap;
 
-  const TestimonialCard({Key key, @required this.testimonial})
+  const TestimonialCard(
+      {Key key, @required this.testimonial, this.shrinkWrap = false})
       : super(key: key);
 
   @override
@@ -86,7 +110,8 @@ class TestimonialCard extends StatelessWidget {
       margin: EdgeInsets.all(16),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: TestimonialContent(testimonial: testimonial),
+        child: TestimonialContent(
+            testimonial: testimonial, shrinkWrap: shrinkWrap),
       ),
     );
   }
@@ -94,12 +119,44 @@ class TestimonialCard extends StatelessWidget {
 
 class TestimonialContent extends StatelessWidget {
   final Testimonial testimonial;
+  final bool shrinkWrap;
 
-  const TestimonialContent({Key key, this.testimonial}) : super(key: key);
+  const TestimonialContent({Key key, this.testimonial, this.shrinkWrap = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Widget text = Padding(
+      padding: const EdgeInsets.only(top: 16.0),
+      child: AutoSizeText(
+        testimonial.text,
+        overflowReplacement:
+            Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+          Expanded(
+              child: Text(testimonial.text,
+                  overflow: TextOverflow.fade, style: aDarkBlue16)),
+          Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: TextButton(
+                onPressed: () => router.navigateTo(
+                    context,
+                    TestimonialDialog.routeName(
+                        allTestimonials.indexOf(testimonial).toString())),
+                child: Text("See the rest", style: aLightBlue16Medium)),
+          )
+        ]),
+        minFontSize: aDarkBlue16.fontSize,
+        style: aDarkBlue16,
+        textAlign: TextAlign.left,
+      ),
+    );
+    if (shrinkWrap) {
+      text = Flexible(child: text);
+    } else {
+      text = Expanded(child: text);
+    }
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Row(
@@ -115,28 +172,23 @@ class TestimonialContent extends StatelessWidget {
                       fit: BoxFit.cover),
                   boxShadow: kElevationToShadow[6]),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                ServiceIcons(
-                  services: testimonial.services,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: ServiceText(services: testimonial.services),
-                ),
-              ],
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  ServiceIcons(
+                    services: testimonial.services,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: ServiceText(services: testimonial.services),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 16.0),
-          child: Text(
-            testimonial.text,
-            style: aDarkBlue16,
-            textAlign: TextAlign.left,
-          ),
-        ),
+        text,
         Padding(
           padding: const EdgeInsets.only(top: 16),
           child: Column(

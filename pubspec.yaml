@@ -8,6 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  auto_size_text: ^3.0.0
   smooth_page_indicator: 0.1.5
   url_launcher: 5.4.7
   photo_view: 0.9.2
@@ -41,16 +42,14 @@ flutter:
     - assets/images/menu.png
     - assets/images/vertical_logo.png
     - assets/images/close.png
-    - assets/images/alosha-discover.png
     - assets/images/home-background.png
-    - assets/images/alosha-profile.png
     - assets/images/boss-cuts-home.png
     - assets/images/tceshop-product-detail.png
-    - assets/images/zakiyah-acosta.jpg
     - assets/images/josh-york.jpg
     - assets/images/sandeep.jpeg
     - assets/images/app-development.png
     - assets/images/web-development.png
+    - assets/images/windows-development.png
     - assets/images/ui-design.png
     - assets/images/close-dark-blue.png
     - assets/images/alosha-icon.png
@@ -64,11 +63,13 @@ flutter:
     - assets/images/companions-forever-shifts.png
     - assets/images/tce-shop-icon.png
     - assets/images/alosha-home.png
-    - assets/images/alosha-product-detail.png
-    - assets/images/alosha-profile-artwork.png
-    - assets/images/alosha-profile-activity.png
-    - assets/images/alosha-share-questionnaire.png
-    - assets/images/alosha-share-success.png
+    - assets/images/alosha-painting-detail.png
+    - assets/images/alosha-painting.png
+    - assets/images/alosha-music-detail.png
+    - assets/images/alosha-sign-up.png
+    - assets/images/alosha-profile.png
+    - assets/images/alosha-share.png
+    - assets/images/alosha-checkout.png
     - assets/images/alosha-sign-up.png
     - assets/images/boss-cuts-home.png
     - assets/images/boss-cuts-login.png
@@ -87,12 +88,6 @@ flutter:
     - assets/images/inquiry.png
     - assets/images/send.png
     - assets/images/send-large-blue.png
-    - assets/images/haqq-app-home.png
-    - assets/images/haqq-app-loyalty.png
-    - assets/images/haqq-app-search.png
-    - assets/images/haqq-loyalty-analytics.png
-    - assets/images/haqq-loyalty-customer.png
-    - assets/images/haqq-loyalty-home.png
     - assets/images/angulardart-badge.png
     - assets/images/angulardart-badge.png
     - assets/images/aqueduct-badge.png
@@ -111,6 +106,33 @@ flutter:
     - assets/images/development.png
     - assets/images/professional.png
     - assets/images/full-logo.png
+    - assets/images/road-id-icon.png
+    - assets/images/road-id-activity-finished.png
+    - assets/images/road-id-activity-in-progress.png
+    - assets/images/road-id-activity-paused.png
+    - assets/images/road-id-guardian.png
+    - assets/images/road-id-history.png
+    - assets/images/road-id-home.png
+    - assets/images/road-id-ecrumbs.png
+    - assets/images/road-id-paywall.png
+    - assets/images/road-id-sos-countdown.png
+    - assets/images/road-id-splash.png
+    - assets/images/deck-icon.png
+    - assets/images/deck-home-visual.png
+    - assets/images/deck-home-text.png
+    - assets/images/deck-add-contact.png
+    - assets/images/deck-profile.png
+    - assets/images/deck-qr.png
+    - assets/images/value-tracker-form.png
+    - assets/images/value-tracker-form-overlay.png
+    - assets/images/value-tracker-icon.png
+    - assets/images/value-tracker-intake.png
+    - assets/images/value-tracker-login.png
+    - assets/images/value-tracker-scanners.png
+    - assets/images/value-tracker-sync.png
+    - assets/images/jordan-poulsen.jpg
+    - assets/images/nephi-harvey.jpeg
+    - assets/images/ben-depew.png
 
   fonts:
     - family: Asap

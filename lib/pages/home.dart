@@ -105,6 +105,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Flexible(
+                            flex: 10,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,11 +143,14 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 32),
-                            child: Image.asset(
-                                "assets/images/alosha-discover.png"),
+                          Flexible(
+                            flex: 8,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 32),
+                              child: Image.asset(
+                                  "assets/images/road-id-ecrumbs.png"),
+                            ),
                           ),
                         ],
                       ),
@@ -184,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 32),
-                        child: Image.asset("assets/images/alosha-discover.png"),
+                        child: Image.asset("assets/images/road-id-ecrumbs.png"),
                       ),
                     ]),
                   ),
@@ -218,9 +222,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   ProductPageView(assetPaths: [
-                    "assets/images/boss-cuts-home.png",
+                    "assets/images/alosha-painting-detail.png",
                     "assets/images/companions-forever-shifts.png",
-                    "assets/images/tceshop-product-detail.png",
+                    "assets/images/deck-home-visual.png",
                   ]),
                   Padding(
                       padding: const EdgeInsets.only(top: 64),
@@ -262,7 +266,7 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
-                          Testimonials(),
+                          Testimonials(limit: 3),
                         ],
                       )),
                 ])),

@@ -116,21 +116,21 @@ class _HireMeDialogState extends State<HireMeDialog> {
 
 String budgetRangeToString(BudgetRange range) {
   switch (range) {
-    case BudgetRange.fiveKToTenK:
-      return "\$5,000 - \$10,000";
+    case BudgetRange.twentyKToThirtyK:
+      return "\$20,000 - \$30,000";
       break;
-    case BudgetRange.tenKToTwentyK:
-      return "\$10,000 - \$20,000";
+    case BudgetRange.thirtyKToFiftyK:
+      return "\$30,000 - \$50,000";
       break;
-    case BudgetRange.twentyKPlus:
-      return "\$20,000+";
+    case BudgetRange.fiftyKPlus:
+      return "\$50,000+";
       break;
   }
   return null;
 }
 
 enum BudgetRange {
-  fiveKToTenK,
-  tenKToTwentyK,
-  twentyKPlus,
+  twentyKToThirtyK,
+  thirtyKToFiftyK,
+  fiftyKPlus,
 }

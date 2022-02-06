@@ -28,6 +28,12 @@ final TextStyle aLightBlue16 = TextStyle(
     color: aLightBlue,
     fontSize: 16);
 
+final TextStyle aLightBlue16Medium = TextStyle(
+    fontFamily: "Quicksand",
+    fontWeight: FontWeight.w500,
+    color: aLightBlue,
+    fontSize: 16);
+
 final TextStyle aOrange10Medium = TextStyle(
     fontFamily: "Quicksand",
     fontWeight: FontWeight.w500,
@@ -124,10 +130,16 @@ final TextStyle titleWhite24 = TextStyle(
     color: Colors.white,
     fontSize: 24);
 
-final TextStyle titleWhite36Bold = TextStyle(
+const TextStyle titleWhite36Bold = TextStyle(
     fontFamily: "Asap",
     fontWeight: FontWeight.w700,
     color: Colors.white,
+    fontSize: 36);
+
+const TextStyle titleADarkBlue36Bold = TextStyle(
+    fontFamily: "Asap",
+    fontWeight: FontWeight.w700,
+    color: aDarkBlue,
     fontSize: 36);
 
 final TextStyle titleWhite42Bold = TextStyle(
