@@ -132,9 +132,7 @@ class TestimonialContent extends StatelessWidget {
         testimonial.text,
         overflowReplacement:
             Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-          Expanded(
-              child: Text(testimonial.text,
-                  overflow: TextOverflow.fade, style: aDarkBlue16)),
+          Expanded(child: SelectableText(testimonial.text, style: aDarkBlue16)),
           Padding(
             padding: const EdgeInsets.only(top: 4),
             child: TextButton(

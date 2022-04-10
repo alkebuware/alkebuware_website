@@ -123,7 +123,7 @@ class ProductCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: Text(
+              child: SelectableText(
                 product.summary,
                 style: aDarkBlue16,
               ),

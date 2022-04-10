@@ -19,9 +19,9 @@ final List<Testimonial> allTestimonials = const [
       position: "CTO",
       text: "Tariq has worked with Fort Supply Technologies, LLC as a contract "
           "developer since March 2021 to develop novel solutions for the "
-          "animal food safety industry.  His skills have proven exceptional in "
+          "animal food safety industry. His skills have proven exceptional in "
           "figuring out how to implement software solutions for our essential "
-          "industry in difficult times.  He is an excellent communicator from "
+          "industry in difficult times. He is an excellent communicator from "
           "design to deployment using Flutter and other related development "
           "tools. When presented with roadblocks he focuses on quickly and "
           "efficiently implementing permanent solutions.  I would recommend "

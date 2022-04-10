@@ -44,7 +44,7 @@ class _PortfolioDetailPageState extends State<PortfolioDetailPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 24.0),
-            child: Text(product.detail, style: aDarkBlue16),
+            child: SelectableText(product.detail, style: aDarkBlue16),
           )
         ])),
         Padding(
