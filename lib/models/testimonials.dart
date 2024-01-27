@@ -1,6 +1,60 @@
-import 'package:meta/meta.dart';
-
 final List<Testimonial> allTestimonials = const [
+  const Testimonial(
+      name: "Michael B.",
+      services: [
+        Service.iotDevelopment,
+        Service.windowsDevelopment,
+        Service.appDevelopment,
+      ],
+      assetName: "assets/images/michael-b.jpeg",
+      company: "Fort Supply Technologies, LLC",
+      position: "Director of Software",
+      text: "I highly recommend Tariq for any position requiring expertise in "
+          "cross platform app development, mentoring, Bluetooth, or UX. Tariq "
+          "is an exceptional professional with a unique skill set. His "
+          "background in embedded technologies means he can work capably with "
+          "IoT which is a great skill to have even if you don't need it "
+          "yet.\n\n"
+          "Tariq's Flutter programming skills are remarkable, delivering "
+          "high-quality code that meets project requirements. His mentoring "
+          "abilities foster a collaborative work environment, and his "
+          "expertise in embedded systems has been invaluable in achieving "
+          "goals under budget. Furthermore, Tariq's understanding of UX makes "
+          "him a true coding unicorn. He can build prototypes and models and "
+          "then build code that matches it exactly and programmatically.\n\n"
+          "He met budget constraints, mentored, planned, and executed. He "
+          "asked questions and pushed back when appropriate during planning. "
+          "And he focused on obstacles first so he'd know fast whether he'd "
+          "start under budget and on time.\n\n"
+          "I definitely recommend Tariq. He is a dedicated professional who "
+          "consistently delivers exceptional results."),
+  const Testimonial(
+      name: "Juan L.",
+      services: [Service.appDevelopment],
+      assetName: "assets/images/juan.jpeg",
+      company: "Pluto TV",
+      position: "Lead Software Engineer",
+      text:
+          "I had the pleasure of working with Tariq for a year at Pluto TV as "
+          "his technical lead. In that time, I was consistently impressed by "
+          "his expertise in Flutter and his ability to deliver high-quality, "
+          "fast experimentation features.\n\n"
+          "Tariq is a highly skilled senior "
+          "engineer with a deep understanding of Flutter and a passion for "
+          "delivering exceptional user experiences. He is a creative problem "
+          "solver who consistently finds innovative solutions to complex "
+          "technical  challenges, and he has a remarkable ability to translate "
+          "complex ideas into practical, user - friendly solutions.\n\n"
+          "Tariq is also a fantastic team player and a joy to work with. He "
+          "has excellent communication skills, and he is always willing to "
+          "lend a hand to help others on the team. His positive attitude and "
+          "enthusiasm for his work are contagious, and he has been "
+          "instrumental in creating a supportive, collaborative work "
+          "environment.\n\n"
+          "In conclusion, I highly recommend Tariq as a senior "
+          "Flutter engineer. He has the technical expertise and interpersonal "
+          "skills to be a valuable asset to any team, and I am confident that "
+          "he will continue to excel in his career."),
   const Testimonial(
       name: "Ben D.",
       services: [Service.webDevelopment, Service.appDevelopment],
@@ -13,7 +67,11 @@ final List<Testimonial> allTestimonials = const [
           "him for all of my mobile development needs moving forward."),
   const Testimonial(
       name: "Nephi H.",
-      services: [Service.uiDesign, Service.appDevelopment, Service.windowsDevelopment],
+      services: [
+        Service.iotDevelopment,
+        Service.appDevelopment,
+        Service.windowsDevelopment
+      ],
       assetName: "assets/images/nephi-harvey.jpeg",
       company: "Fort Supply Technologies, LLC",
       position: "CTO",
@@ -72,17 +130,18 @@ class Testimonial {
   final String text;
 
   const Testimonial(
-      {@required this.name,
-      @required this.services,
-      @required this.position,
-      @required this.company,
-      @required this.assetName,
-      @required this.text});
+      {required this.name,
+      required this.services,
+      required this.position,
+      required this.company,
+      required this.assetName,
+      required this.text});
 }
 
 enum Service {
   uiDesign,
   appDevelopment,
   webDevelopment,
-  windowsDevelopment
+  windowsDevelopment,
+  iotDevelopment
 }

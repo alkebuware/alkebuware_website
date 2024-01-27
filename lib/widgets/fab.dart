@@ -5,10 +5,11 @@ class AFab extends StatelessWidget {
   final Widget child;
   final Color backgroundColor;
 
-  const AFab({Key key,
-    @required this.onPressed,
-    @required this.child,
-    @required this.backgroundColor})
+  const AFab(
+      {Key? key,
+      required this.onPressed,
+      required this.child,
+      required this.backgroundColor})
       : super(key: key);
 
   @override

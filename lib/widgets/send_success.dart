@@ -1,4 +1,5 @@
 import 'package:alkebuware_website/colors.dart';
+import 'package:alkebuware_website/extensions/build_context.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/squared_button.dart';
 import 'package:flutter/material.dart';
@@ -38,9 +39,7 @@ class SendSuccess extends StatelessWidget {
               textStyle: white20Medium,
               backgroundColor: aOrange,
               text: "OK 👌",
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: context.back,
             ),
           )
         ],

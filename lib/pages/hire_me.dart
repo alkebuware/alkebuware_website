@@ -24,7 +24,7 @@ class HireMePage extends StatelessWidget {
             "details on your project and I’ll get back to you within 24 hours.",
         callToAction: "Reach Out",
         onTap: () {
-          router.navigateTo(context, HireMeDialog.routeName);
+          router.push(HireMeDialog.routeName);
         },
         backgroundIconPath: "assets/images/hand-shake.png",
       ),
@@ -36,7 +36,7 @@ class HireMePage extends StatelessWidget {
             "hello. So tap that button but below and send away.",
         callToAction: "Send Inquiry",
         onTap: () {
-          router.navigateTo(context, GeneralInquiryDialog.routeName);
+          router.push(GeneralInquiryDialog.routeName);
         },
         backgroundIconPath: "assets/images/inquiry.png",
       ),
@@ -57,12 +57,12 @@ class _HireMeCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const _HireMeCard(
-      {Key key,
-      @required this.title,
-      @required this.description,
-      @required this.callToAction,
-      @required this.onTap,
-      @required this.backgroundIconPath})
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.callToAction,
+      required this.onTap,
+      required this.backgroundIconPath})
       : super(key: key);
 
   @override

@@ -50,8 +50,7 @@ class ServicesPage extends StatelessWidget {
                         "developing your app.",
                     onTap: () {
                       ServicesInquiryDialogState.title = "Development Inquiry";
-                      router.navigateTo(
-                          context, ServicesInquiryDialog.routeName);
+                      router.push(ServicesInquiryDialog.routeName);
                     },
                     backgroundIconPath: "assets/images/development.png"),
               ),
@@ -60,7 +59,7 @@ class ServicesPage extends StatelessWidget {
                 child: _ServicesCard(
                     title: "Consulting",
                     description:
-                    "Sometimes during the early stages of launching a new "
+                        "Sometimes during the early stages of launching a new "
                         "digital product you may need help with figuring out a "
                         "timeline, or an estimate of the costs, or a general "
                         "overview of the process of getting your very own app in "
@@ -70,8 +69,7 @@ class ServicesPage extends StatelessWidget {
                         "to launch the app you need.",
                     onTap: () {
                       ServicesInquiryDialogState.title = "Consulting";
-                      router.navigateTo(
-                          context, ServicesInquiryDialog.routeName);
+                      router.push(ServicesInquiryDialog.routeName);
                     },
                     backgroundIconPath: "assets/images/consulting.png"),
               ),
@@ -80,7 +78,7 @@ class ServicesPage extends StatelessWidget {
                 child: _ServicesCard(
                     title: "UI Design",
                     description:
-                    "So you know the steps to launch your digital product? You "
+                        "So you know the steps to launch your digital product? You "
                         "now need someone that can execute your vision and have "
                         "them create the design, look, and feel of your product. I "
                         "can help with this too. Tap the button below to send an "
@@ -88,8 +86,7 @@ class ServicesPage extends StatelessWidget {
                         "life.",
                     onTap: () {
                       ServicesInquiryDialogState.title = "UI Design Inquiry";
-                      router.navigateTo(
-                          context, ServicesInquiryDialog.routeName);
+                      router.push(ServicesInquiryDialog.routeName);
                     },
                     backgroundIconPath: "assets/images/ui-design2.png"),
               ),
@@ -107,11 +104,11 @@ class _ServicesCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const _ServicesCard(
-      {Key key,
-      @required this.title,
-      @required this.description,
-      @required this.onTap,
-      @required this.backgroundIconPath})
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.onTap,
+      required this.backgroundIconPath})
       : super(key: key);
 
   @override
@@ -132,7 +129,7 @@ class _ServicesCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(title, style: titleWhite16),
             Padding(
               padding: const EdgeInsets.only(top: 16.0),

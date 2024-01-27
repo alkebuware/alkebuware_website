@@ -1,5 +1,6 @@
 import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/dimensions.dart';
+import 'package:alkebuware_website/extensions/build_context.dart';
 import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/pages/about.dart';
 import 'package:alkebuware_website/pages/general_inquiry_dialog.dart';
@@ -12,13 +13,14 @@ import 'package:alkebuware_website/pages/services.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/squared_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import 'current_route_builder.dart';
 import 'rounded_button.dart';
 
 class AAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const AAppBar({Key key}) : super(key: key);
+  const AAppBar({Key? key}) : super(key: key);
 
   @override
   _AAppBarState createState() => _AAppBarState();
@@ -30,15 +32,15 @@ class AAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _AAppBarState extends State<AAppBar> {
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: _MobileAAppbar(),
-      desktop: _TabletAAppbar(),
+    return ScreenTypeLayout.builder(
+      mobile: (context) => _MobileAAppbar(),
+      desktop: (context) => _TabletAAppbar(),
     );
   }
 }
 
 class _TabletAAppbar extends StatefulWidget {
-  const _TabletAAppbar({Key key}) : super(key: key);
+  const _TabletAAppbar({Key? key}) : super(key: key);
 
   @override
   __TabletAAppbarState createState() => __TabletAAppbarState();
@@ -66,8 +68,13 @@ class __TabletAAppbarState extends State<_TabletAAppbar> {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      if (observer.currentRoute != HomePage.routeName) {
-                        router.navigateTo(context, HomePage.routeName);
+                      if (GoRouter.of(context)
+                              .routeInformationProvider
+                              .value
+                              .uri
+                              .path !=
+                          HomePage.routeName) {
+                        router.go(HomePage.routeName);
                       }
                     },
                     splashColor: Colors.white24,
@@ -106,7 +113,7 @@ class __TabletAAppbarState extends State<_TabletAAppbar> {
 }
 
 class _MobileAAppbar extends StatelessWidget {
-  const _MobileAAppbar({Key key}) : super(key: key);
+  const _MobileAAppbar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -129,8 +136,8 @@ class _MobileAAppbar extends StatelessWidget {
                   color: Colors.transparent,
                   child: InkWell(
                     onTap: () {
-                      if (observer.currentRoute != HomePage.routeName) {
-                        router.navigateTo(context, HomePage.routeName);
+                      if (context.currentRoute != HomePage.routeName) {
+                        router.go(HomePage.routeName);
                       }
                     },
                     splashColor: Colors.white24,
@@ -162,9 +169,7 @@ class LetsChatButton extends StatelessWidget {
         backgroundColor: Colors.white,
         text: "Let's Chat 😀",
         textStyle: aOrange14Medium,
-        onTap: () {
-          router.navigateTo(context, GeneralInquiryDialog.routeName);
-        },
+        onTap: () => router.push(GeneralInquiryDialog.routeName),
       ),
     );
   }
@@ -173,10 +178,10 @@ class LetsChatButton extends StatelessWidget {
 class _TabletNavigationButton extends StatelessWidget {
   final String routeName;
   final String text;
-  final State state;
+  final State? state;
 
   const _TabletNavigationButton(
-      {Key key, @required this.routeName, @required this.text, this.state})
+      {Key? key, required this.routeName, required this.text, this.state})
       : super(key: key);
 
   @override
@@ -186,7 +191,7 @@ class _TabletNavigationButton extends StatelessWidget {
         backgroundColor: Colors.transparent,
         text: text,
         onTap: () {
-          router.navigateTo(context, this.routeName);
+          router.go(this.routeName);
         },
         textStyle: routeName == this.routeName ? white16 : white5416,
       );
@@ -205,9 +210,7 @@ class _MenuButton extends StatelessWidget {
           splashColor: Colors.white24,
           highlightColor: Colors.white24,
           borderRadius: BorderRadius.circular(100),
-          onTap: () {
-            router.navigateTo(context, MenuDialog.routeName);
-          },
+          onTap: () => router.push( MenuDialog.routeName),
           child: Column(
             children: <Widget>[
               Text("Menu", style: white12Medium),

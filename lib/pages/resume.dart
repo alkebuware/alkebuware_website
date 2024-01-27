@@ -22,7 +22,7 @@ class ResumePage extends StatelessWidget {
                     padding: EdgeInsets.only(top: 16, right: 32, bottom: 16),
                     child: Text(
                         "Software engineer with 8+ years of "
-                        "experience and 4+ years of Flutter experience "
+                        "experience and 5+ years of Flutter experience "
                         "development and a background in embedded development."
                         "With experience working with multidisciplinary teams "
                         "using tools like Asana, and valuing "
@@ -202,7 +202,7 @@ class _Badge extends StatelessWidget {
   final String path;
   final String tooltip;
 
-  const _Badge({Key key, @required this.path, @required this.tooltip})
+  const _Badge({Key? key, required this.path, required this.tooltip})
       : super(key: key);
 
   @override

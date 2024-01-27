@@ -1,5 +1,6 @@
 import 'package:alkebuware_website/colors.dart';
 import 'package:alkebuware_website/dimensions.dart';
+import 'package:alkebuware_website/extensions/build_context.dart';
 import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/rounded_button.dart';
@@ -9,13 +10,13 @@ import 'package:responsive_builder/responsive_builder.dart';
 class ADialog extends StatelessWidget {
   final Widget child;
   final String title;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final TextStyle titleTextStyle;
 
   const ADialog(
-      {Key key,
-      @required this.child,
-      @required this.title,
+      {Key? key,
+      required this.child,
+      required this.title,
       this.backgroundColor,
       this.titleTextStyle = titleWhite36Bold})
       : super(key: key);
@@ -39,8 +40,6 @@ class ADialog extends StatelessWidget {
                   context: context,
                   mobile: getScreenHeight(context),
                   desktop: 500)),
-          padding: EdgeInsets.only(
-              top: 16 + getStatusBarHeight(context), left: 16, right: 16),
           height: getValueForScreenType(
               context: context,
               mobile: getScreenHeight(context),
@@ -56,14 +55,15 @@ class ADialog extends StatelessWidget {
               gradient: backgroundColor == null ? lightBlueGradient : null,
               borderRadius: BorderRadius.circular(getValueForScreenType(
                   context: context, mobile: 0, tablet: 0, desktop: 16))),
-          child: Column(
+          child: ListView(
+            shrinkWrap: true,
+            padding: EdgeInsets.only(
+                top: 16 + getStatusBarHeight(context), left: 16, right: 16, bottom: 16),
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(
-                    constraints:
-                        BoxConstraints(maxWidth: getScreenWidth(context) - 80),
+                  Expanded(
                     child: Text(
                       title,
                       style: titleTextStyle,
@@ -78,12 +78,12 @@ class ADialog extends StatelessWidget {
                             ? Image.asset("assets/images/close.png")
                             : Image.asset("assets/images/close-dark-blue.png"),
                         onPressed: () {
-                          router.pop(context);
+                          context.back();
                         }),
                   )
                 ],
               ),
-              Flexible(child: child),
+              child,
             ],
           ),
         ),
@@ -97,24 +97,23 @@ class NavigationButton extends StatelessWidget {
   final String text;
 
   const NavigationButton(
-      {Key key, @required this.routeName, @required this.text})
+      {Key? key, required this.routeName, required this.text})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<String>(
-        stream: observer.currentRouteStream,
-        builder: (context, snapshot) {
+    return ListenableBuilder(
+        listenable: context.router.routeInformationProvider,
+        builder: (context, _) {
           return RoundedButton(
             padding: EdgeInsets.symmetric(vertical: 0, horizontal: 24),
             text: text,
             textStyle: titleWhite36Bold,
-            backgroundColor: snapshot.data == routeName
+            backgroundColor: context.currentRoute == routeName
                 ? Colors.white12
                 : Colors.transparent,
             onTap: () {
-              router.pop(context);
-              router.navigateTo(context, routeName);
+              router.go(routeName);
             },
           );
         });

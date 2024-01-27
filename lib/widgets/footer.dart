@@ -15,10 +15,10 @@ import 'rounded_button.dart';
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-      mobile: _Mobile(),
-      tablet: _Mobile(),
-      desktop: _Desktop(),
+    return ScreenTypeLayout.builder(
+      mobile: (context) => _Mobile(),
+      tablet: (context) => _Mobile(),
+      desktop: (context) => _Desktop(),
     );
   }
 }
@@ -120,7 +120,7 @@ class _Button extends StatelessWidget {
   final String routeName;
   final String text;
 
-  const _Button({Key key, @required this.routeName, @required this.text})
+  const _Button({Key? key, required this.routeName, required this.text})
       : super(key: key);
 
   @override
@@ -131,9 +131,7 @@ class _Button extends StatelessWidget {
         backgroundColor: Colors.transparent,
         text: text,
         textStyle: titleWhite24,
-        onTap: () {
-          router.navigateTo(context, routeName);
-        },
+        onTap: () => router.go(routeName),
       ),
     );
   }

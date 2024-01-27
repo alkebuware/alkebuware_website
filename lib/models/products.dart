@@ -267,22 +267,22 @@ class Product {
   final String name;
   final String summary;
   final String detail;
-  final String websiteUrl;
-  final Color iconBackgroundColor;
-  final Gradient iconBackgroundGradient;
+  final String? websiteUrl;
+  final Color? iconBackgroundColor;
+  final Gradient? iconBackgroundGradient;
   final List<String> deviceArt;
   final EdgeInsets iconPadding;
 
   Product(
-      {@required this.deviceArt,
+      {required this.deviceArt,
       this.websiteUrl,
       this.iconPadding = const EdgeInsets.all(8),
       this.iconBackgroundGradient,
-      @required this.color,
-      @required this.assetIconName,
-      @required this.services,
-      @required this.name,
-      @required this.summary,
-      @required this.detail,
+      required this.color,
+      required this.assetIconName,
+      required this.services,
+      required this.name,
+      required this.summary,
+      required this.detail,
       this.iconBackgroundColor});
 }

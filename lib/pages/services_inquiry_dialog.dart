@@ -14,15 +14,15 @@ class ServicesInquiryDialog extends StatefulWidget {
 
 class ServicesInquiryDialogState extends State<ServicesInquiryDialog> {
   final _formKey = GlobalKey<FormState>();
-  String _name;
-  String _email;
-  String _inquiry;
-  static String title;
+  String? _name;
+  String? _email;
+  String? _inquiry;
+  static String title = "";
   bool _sendSucceeded = false;
 
   @override
   void dispose() {
-    title = null;
+    title = "";
     super.dispose();
   }
 
@@ -30,76 +30,72 @@ class ServicesInquiryDialogState extends State<ServicesInquiryDialog> {
   Widget build(BuildContext context) {
     return ADialog(
       title: title,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Form(
-          key: _formKey,
-          child: _sendSucceeded == true
-              ? SendSuccess()
-              : ListView(children: [
-                  ATextFormField(
-                    labelText: "Name*",
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "What's your name?";
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      _name = value;
-                    },
-                  ),
-                  ATextFormField(
-                    labelText: "Email*",
-                    keyboardType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "What's your email?";
-                      } else if (isEmail(value) != true) {
-                        return "Please enter a valid email";
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      _email = value;
-                    },
-                  ),
-                  ATextFormField(
-                    labelText: "Inquiry*",
-                    minLines: 3,
-                    maxLines: 5,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return "Please tell me how I can help";
-                      }
-                      return null;
-                    },
-                    onSaved: (value) {
-                      _inquiry = value;
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 32.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        SendButton(
-                          onSuccess: () {
-                            setState(() => _sendSucceeded = true);
-                          },
-                          formKey: _formKey,
-                          formData: () => {
-                            "title": title,
-                            "name": _name,
-                            "email": _email,
-                            "inquiry": _inquiry,
-                          },
-                        )
-                      ],
-                    ),
-                  )
-                ]),
-        ),
+      child: Form(
+        key: _formKey,
+        child: _sendSucceeded == true
+            ? SendSuccess()
+            : Column(children: [
+          ATextFormField(
+            labelText: "Name*",
+            validator: (value) {
+              if (value.isEmpty) {
+                return "What's your name?";
+              }
+              return null;
+            },
+            onSaved: (value) {
+              _name = value;
+            },
+          ),
+          ATextFormField(
+            labelText: "Email*",
+            keyboardType: TextInputType.emailAddress,
+            validator: (value) {
+              if (value.isEmpty) {
+                return "What's your email?";
+              } else if (isEmail(value) != true) {
+                return "Please enter a valid email";
+              }
+              return null;
+            },
+            onSaved: (value) {
+              _email = value;
+            },
+          ),
+          ATextFormField(
+            labelText: "Inquiry*",
+            minLines: 3,
+            maxLines: 5,
+            validator: (value) {
+              if (value.isEmpty) {
+                return "Please tell me how I can help";
+              }
+              return null;
+            },
+            onSaved: (value) {
+              _inquiry = value;
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 32.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                SubmitFormButton(
+                  onSuccess: () => setState(() => _sendSucceeded = true),
+                  formKey: _formKey,
+                  type: FormType.servicesInquiry,
+                  formData: () => {
+                    "title": title,
+                    "name": _name,
+                    "email": _email,
+                    "inquiry": _inquiry,
+                  },
+                )
+              ],
+            ),
+          )
+        ]),
       ),
     );
   }

@@ -13,14 +13,15 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       AContainer(
-        child: ScreenTypeLayout(
-          mobile:
+        child: ScreenTypeLayout.builder(
+          mobile: (context) =>
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             _Picture(),
             _Introduction(),
             _Summary(),
           ]),
-          desktop: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          desktop: (context) =>
+              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             _Picture(),
             Flexible(
               child: Padding(
@@ -70,9 +71,9 @@ class AboutPage extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16),
               child: Text(
                 "Whenever I work with other professionals to deliver products "
-                    "I learn a lot about the business case, and the problem that "
-                    "their product solves. Consequently, we’ll learn a lot from "
-                    "each other on our way delivering a world class product.",
+                "I learn a lot about the business case, and the problem that "
+                "their product solves. Consequently, we’ll learn a lot from "
+                "each other on our way delivering a world class product.",
                 style: aDarkBlue16Medium,
               ),
             )
@@ -96,10 +97,10 @@ class AboutPage extends StatelessWidget {
 class _Picture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset("assets/images/professional.png"),
-      ],
+    return Image.asset(
+      "assets/images/professional.jpeg",
+      height: 400,
+      width: 400,
     );
   }
 }
@@ -122,22 +123,22 @@ class _Summary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "I'm a North Carolina A&T State "
-          "University Alum and the owner of ALKEBUWARE. I'm a Full-Stack "
-          "software engineer with a passion for developing elegant user "
-          "interfaces and robust backends. I'm fully committed to helping you go "
-          "from idea to product launch. I have designed, developed, and deployed "
-          "multiple software products and have experience with a number of "
-          "different Back-End as a Service platforms. In addition to my software "
-          "development exploits I've also created mock-ups and user interaction "
-          "diagrams for a number of applications that I've built from the ground "
-          "up. Having a background in embedded software systems enables me to "
-          "take a holistic approach to the software solutions provide.\n\n"
-          "I will work together with you to build compelling apps that provide "
-          "lasting excitement and value to their customers. My understanding of "
-          "mobile and web based technology empowers me to bring a level of "
-          "expertise to your company like no one else. I know how to build "
-          "products that can scale to your business' needs, regardless if you're "
-          "a startup or an established company.",
+      "University Alum and the owner of ALKEBUWARE. I'm a Full-Stack "
+      "software engineer with a passion for developing elegant user "
+      "interfaces and robust backends. I'm fully committed to helping you go "
+      "from idea to product launch. I have designed, developed, and deployed "
+      "multiple software products and have experience with a number of "
+      "different Back-End as a Service platforms. In addition to my software "
+      "development exploits I've also created mock-ups and user interaction "
+      "diagrams for a number of applications that I've built from the ground "
+      "up. Having a background in embedded software systems enables me to "
+      "take a holistic approach to the software solutions provide.\n\n"
+      "I will work together with you to build compelling apps that provide "
+      "lasting excitement and value to their customers. My understanding of "
+      "mobile and web based technology empowers me to bring a level of "
+      "expertise to your company like no one else. I know how to build "
+      "products that can scale to your business' needs, regardless if you're "
+      "a startup or an established company.",
       style: aDarkBlue16Medium,
     );
   }

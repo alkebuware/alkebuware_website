@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AContainer extends StatelessWidget {
   final Widget child;
 
-  const AContainer({Key key, this.child}) : super(key: key);
+  const AContainer({Key? key,required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

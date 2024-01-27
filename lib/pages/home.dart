@@ -41,30 +41,31 @@ class _HomePageState extends State<HomePage> {
           _heroKey.currentContext != null) {
         setState(() {
           _desktopBackgroundHeight = max(
-              _backgroundImageKey.currentContext.size.height -
-                  _heroKey.currentContext.size.height,
+              _backgroundImageKey.currentContext!.size!.height -
+                  _heroKey.currentContext!.size!.height,
               0);
         });
       }
     });
     return Stack(
       children: [
-        ScreenTypeLayout(
-            desktop: Image.asset("assets/images/home-background.png",
+        ScreenTypeLayout.builder(
+            desktop: (context) => Image.asset(
+                "assets/images/home-background.png",
                 key: _backgroundImageKey,
                 width: getScreenWidth(context),
                 fit: BoxFit.fitWidth),
-            mobile: Image.asset(
-              "assets/images/home-background.png",
-              height: 1000,
-              width: getScreenWidth(context),
-              fit: BoxFit.cover,
-            )),
+            mobile: (context) => Image.asset(
+                  "assets/images/home-background.png",
+                  height: 1000,
+                  width: getScreenWidth(context),
+                  fit: BoxFit.cover,
+                )),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           physics: NeverScrollableScrollPhysics(),
-          child: ScreenTypeLayout(
-            desktop: Padding(
+          child: ScreenTypeLayout.builder(
+            desktop: (context) => Padding(
               padding: const EdgeInsets.only(left: 400),
               child: Container(
                   width: 2000,
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )),
             ),
-            mobile: Padding(
+            mobile: (context) => Padding(
               padding: const EdgeInsets.only(top: 64),
               child: Container(
                   width: 1000,
@@ -97,9 +98,9 @@ class _HomePageState extends State<HomePage> {
             Container(
                 constraints: BoxConstraints(maxWidth: 1024),
                 child: Column(children: [
-                  ScreenTypeLayout(
+                  ScreenTypeLayout.builder(
                     key: _heroKey,
-                    desktop: Padding(
+                    desktop: (context) => Padding(
                       padding: const EdgeInsets.only(top: 100.0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,8 +136,7 @@ class _HomePageState extends State<HomePage> {
                                     textStyle: white20Medium,
                                     backgroundColor: aOrange,
                                     onTap: () {
-                                      router.navigateTo(
-                                          context, HireMeDialog.routeName);
+                                      router.push(HireMeDialog.routeName);
                                     },
                                   ),
                                 ),
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    mobile: Column(children: [
+                    mobile: (context) => Column(children: [
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 32, left: 16, right: 16, bottom: 16),
@@ -180,9 +180,7 @@ class _HomePageState extends State<HomePage> {
                           text: "HIRE ME! 😁",
                           textStyle: white20Medium,
                           backgroundColor: aOrange,
-                          onTap: () {
-                            router.navigateTo(context, HireMeDialog.routeName);
-                          },
+                          onTap: () => router.push(HireMeDialog.routeName),
                         ),
                       ),
                       Padding(
@@ -208,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                         Text("My Work", style: titleADarkBlue24Bold),
                         InkWell(
                           onTap: () {
-                            router.navigateTo(context, PortfolioPage.routeName);
+                            router.go(PortfolioPage.routeName);
                           },
                           child: Row(children: [
                             Text("View portfolio", style: aLightBlue16),
@@ -240,21 +238,20 @@ class _HomePageState extends State<HomePage> {
                                 RoundedButton(
                                     backgroundColor: aOrange,
                                     onTap: () {
-                                      router.navigateTo(
-                                          context, HireMePage.routeName);
+                                      router.go(HireMePage.routeName);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
                                           vertical: 4, horizontal: 16),
                                       child: Row(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                            CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 right: 16.0),
                                             child:
-                                            Text("Hire me", style: white24),
+                                                Text("Hire me", style: white24),
                                           ),
                                           Icon(
                                             Icons.chevron_right,

@@ -7,8 +7,8 @@ class ServiceIcons extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
 
   const ServiceIcons(
-      {Key key,
-      @required this.services,
+      {Key? key,
+      required this.services,
       this.mainAxisAlignment = MainAxisAlignment.end})
       : super(key: key);
 
@@ -31,16 +31,16 @@ class ServiceIcons extends StatelessWidget {
           case Service.windowsDevelopment:
             image = Image.asset("assets/images/windows-development.png");
             break;
+          case Service.iotDevelopment:
+            image = Image.asset("assets/images/iot-development.png",
+                height: 48, fit: BoxFit.fitHeight);
+            break;
         }
 
-        if (image != null) {
-          return Padding(
-            padding: EdgeInsets.only(right: 8),
-            child: image,
-          );
-        } else {
-          return Container();
-        }
+        return Padding(
+          padding: EdgeInsets.only(right: 8),
+          child: image,
+        );
       }).toList(),
     );
   }
@@ -49,7 +49,7 @@ class ServiceIcons extends StatelessWidget {
 class ServiceText extends StatelessWidget {
   final List<Service> services;
 
-  const ServiceText({Key key, @required this.services}) : super(key: key);
+  const ServiceText({Key? key, required this.services}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +72,9 @@ class ServiceText extends StatelessWidget {
           break;
         case Service.windowsDevelopment:
           buffer.write("Windows Development");
+          break;
+        case Service.iotDevelopment:
+          buffer.write("IoT Development");
           break;
       }
     }

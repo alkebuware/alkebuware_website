@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 class ATextFormField extends StatelessWidget {
   final FormFieldValidator validator;
   final FormFieldSetter onSaved;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   final String labelText;
-  final int minLines;
+  final int? minLines;
   final int maxLines;
 
   const ATextFormField({
-    Key key,
-    @required this.validator,
-    @required this.onSaved,
+    Key? key,
+    required this.validator,
+    required this.onSaved,
     this.keyboardType,
-    @required this.labelText,
+    required this.labelText,
     this.minLines,
     this.maxLines = 1,
   }) : super(key: key);

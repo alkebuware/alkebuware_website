@@ -1,28 +1,20 @@
 import 'package:alkebuware_website/models/products.dart';
 import 'package:alkebuware_website/text.dart';
-import 'package:alkebuware_website/utils/get_id.dart';
 import 'package:alkebuware_website/widgets/container.dart';
 import 'package:alkebuware_website/widgets/footer.dart';
 import 'package:alkebuware_website/widgets/page_view.dart';
 import 'package:alkebuware_website/widgets/services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class PortfolioDetailPage extends StatefulWidget {
+class PortfolioDetailPage extends StatelessWidget {
+  PortfolioDetailPage({required this.id});
+
+  final int id;
+
   static String routeName(String id) => "/portfolio/$id";
 
   @override
-  _PortfolioDetailPageState createState() => _PortfolioDetailPageState();
-}
-
-class _PortfolioDetailPageState extends State<PortfolioDetailPage> {
-  @override
   Widget build(BuildContext context) {
-    final id = getId(context);
-    if (id == null) {
-      return Container();
-    }
-
     final product = allProducts[id];
 
     return Column(

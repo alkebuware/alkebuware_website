@@ -3,6 +3,7 @@ import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/dialog.dart';
 import 'package:alkebuware_website/widgets/rounded_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'about.dart';
 import 'hire_me.dart';
@@ -12,7 +13,7 @@ import 'resume.dart';
 import 'services.dart';
 
 class MenuDialog extends StatelessWidget {
-  static const String routeName = "menu";
+  static const String routeName = "/menu";
 
   @override
   Widget build(BuildContext context) {
@@ -39,23 +40,24 @@ class NavigationButton extends StatelessWidget {
   final String text;
 
   const NavigationButton(
-      {Key key, @required this.routeName, @required this.text})
+      {Key? key, required this.routeName, required this.text})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<String>(
-        stream: observer.currentRouteStream,
-        builder: (context, snapshot) {
+    final currentPath = GoRouter.of(context).routeInformationProvider.value.uri.path;
+    return ListenableBuilder(
+        listenable: GoRouter.of(context).routeInformationProvider,
+        builder: (context, _) {
           return RoundedButton(
             padding: EdgeInsets.symmetric(vertical: 0, horizontal: 24),
             text: text,
             textStyle: titleWhite36Bold,
-            backgroundColor: snapshot.data == routeName
+            backgroundColor: currentPath == routeName
                 ? Colors.white12
                 : Colors.transparent,
             onTap: () {
-              router.navigateTo(context, routeName);
+              router.go(routeName);
             },
           );
         });

@@ -1,4 +1,5 @@
 import 'package:alkebuware_website/colors.dart';
+import 'package:alkebuware_website/extensions/build_context.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -9,21 +10,21 @@ import 'package:transparent_image/transparent_image.dart';
 class ProductPageView extends StatelessWidget {
   final List<String> assetPaths;
 
-  const ProductPageView({Key key, this.assetPaths}) : super(key: key);
+  const ProductPageView({Key? key, required this.assetPaths}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout(
-        mobile: _Mobile(assetPaths: assetPaths),
-        tablet: _Mobile(assetPaths: assetPaths),
-        desktop: _Desktop(assetPaths: assetPaths));
+    return ScreenTypeLayout.builder(
+        mobile: (context) => _Mobile(assetPaths: assetPaths),
+        tablet: (context) => _Mobile(assetPaths: assetPaths),
+        desktop: (context) => _Desktop(assetPaths: assetPaths));
   }
 }
 
 class _Desktop extends StatelessWidget {
   final List<String> assetPaths;
 
-  const _Desktop({Key key, this.assetPaths}) : super(key: key);
+  const _Desktop({Key? key,required this.assetPaths}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +50,14 @@ class _Desktop extends StatelessWidget {
 class _Mobile extends StatefulWidget {
   final List<String> assetPaths;
 
-  const _Mobile({Key key, this.assetPaths}) : super(key: key);
+  const _Mobile({Key? key,required this.assetPaths}) : super(key: key);
 
   @override
   __MobileState createState() => __MobileState();
 }
 
 class __MobileState extends State<_Mobile> {
-  PageController _controller;
+  late PageController _controller;
 
   @override
   void initState() {
@@ -73,7 +74,7 @@ class __MobileState extends State<_Mobile> {
               context: context,
               builder: (BuildContext context) {
                 PageController controller =
-                    PageController(initialPage: _controller.page.round());
+                    PageController(initialPage: _controller.page?.round() ?? 0);
                 return Material(
                   color: Colors.transparent,
                   child: Stack(
@@ -97,9 +98,7 @@ class __MobileState extends State<_Mobile> {
                           padding: const EdgeInsets.all(16.0),
                           child: IconButton(
                               icon: Image.asset("assets/images/close.png"),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              }),
+                              onPressed: context.back),
                         ),
                       ),
                     ],

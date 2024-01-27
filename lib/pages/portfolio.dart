@@ -17,10 +17,10 @@ class PortfolioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      ScreenTypeLayout(
-        mobile: _PortfolioPage(columnCount: 1),
-        tablet: _PortfolioPage(columnCount: 2),
-        desktop: _PortfolioPage(columnCount: 2),
+      ScreenTypeLayout.builder(
+        mobile: (context) => _PortfolioPage(columnCount: 1),
+        tablet: (context) => _PortfolioPage(columnCount: 2),
+        desktop: (context) => _PortfolioPage(columnCount: 2),
       ),
       Footer()
     ]);
@@ -30,7 +30,7 @@ class PortfolioPage extends StatelessWidget {
 class _PortfolioPage extends StatelessWidget {
   final int columnCount;
 
-  const _PortfolioPage({Key key, this.columnCount = 2}) : super(key: key);
+  const _PortfolioPage({Key? key, this.columnCount = 2}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class _PortfolioPage extends StatelessWidget {
 class ProductCard extends StatelessWidget {
   final Product product;
 
-  const ProductCard({Key key, this.product}) : super(key: key);
+  const ProductCard({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -142,8 +142,12 @@ class ProductCard extends StatelessWidget {
                               child: Text("View App Website",
                                   style: aDarkBlue20Medium),
                               onPressed: () async {
-                                if (await canLaunch(product.websiteUrl)) {
-                                  launch(product.websiteUrl);
+                                final websiteUrl = product.websiteUrl;
+                                if (websiteUrl != null) {
+                                  final uri = Uri.parse(websiteUrl);
+                                  if (await canLaunchUrl(uri)) {
+                                    launchUrl(uri);
+                                  }
                                 }
                               }),
                         ),
@@ -152,10 +156,8 @@ class ProductCard extends StatelessWidget {
                         backgroundColor: aOrange,
                         text: "View Details",
                         onTap: () {
-                          router.navigateTo(
-                              context,
-                              PortfolioDetailPage.routeName(
-                                  allProducts.indexOf(product).toString()));
+                          router.go(PortfolioDetailPage.routeName(
+                              allProducts.indexOf(product).toString()));
                         },
                       ),
                     ],

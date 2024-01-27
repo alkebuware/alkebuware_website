@@ -1,21 +1,21 @@
 import 'package:alkebuware_website/text.dart';
 import 'package:flutter/material.dart';
 
-typedef Stringifier<T> = String Function(T value);
+typedef Stringifier<T> = String? Function(T value);
 
 class ADropdownFormField<T> extends StatelessWidget {
   final List<T> items;
   final String labelText;
   final FormFieldSetter onSaved;
   final FormFieldValidator validator;
-  final Stringifier<T> stringify;
+  final Stringifier<T>? stringify;
 
   const ADropdownFormField(
-      {Key key,
-      @required this.items,
-      @required this.labelText,
-      @required this.onSaved,
-      @required this.validator,
+      {Key? key,
+      required this.items,
+      required this.labelText,
+      required this.onSaved,
+      required this.validator,
       this.stringify})
       : super(key: key);
 
@@ -49,7 +49,7 @@ class ADropdownFormField<T> extends StatelessWidget {
               .map((range) => DropdownMenuItem(
                   value: range,
                   child: Text(
-                      stringify == null ? range.toString() : stringify(range),
+                      stringify?.call(range) ?? range.toString(),
                       style: white16)))
               .toList();
         },
@@ -57,7 +57,7 @@ class ADropdownFormField<T> extends StatelessWidget {
             .map((range) => DropdownMenuItem(
                 value: range,
                 child: Text(
-                  stringify == null ? range.toString() : stringify(range),
+                  stringify?.call(range) ?? range.toString(),
                 )))
             .toList(),
         onChanged: (value) {});

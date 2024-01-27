@@ -4,7 +4,7 @@ import 'package:alkebuware_website/widgets/current_route_builder.dart';
 import 'package:alkebuware_website/widgets/scrollbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'app_bar.dart';
 import 'fab.dart';
@@ -12,14 +12,14 @@ import 'fab.dart';
 class APage extends StatefulWidget {
   final Widget child;
 
-  const APage({Key key, this.child}) : super(key: key);
+  const APage({Key? key,required this.child}) : super(key: key);
 
   @override
   _APageState createState() => _APageState();
 }
 
 class _APageState extends State<APage> {
-  ScrollController _controller;
+  late ScrollController _controller;
 
   @override
   void initState() {
@@ -40,7 +40,7 @@ class _APageState extends State<APage> {
             AFab(
                 onPressed: () {
                   if (kIsWeb) {
-                    launch("/resume.pdf");
+                    launchUrlString("/resume.pdf");
                   } else {
                     print("can't show pdf in non-web");
                   }
@@ -51,7 +51,7 @@ class _APageState extends State<APage> {
               padding: const EdgeInsets.only(top: 16.0),
               child: AFab(
                   onPressed: () {
-                    launch(
+                    launchUrlString(
                         "https://www.linkedin.com/in/tariq-alkebu-lan-86670245/");
                   },
                   backgroundColor: linkedInBlue,
