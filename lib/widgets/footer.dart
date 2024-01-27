@@ -52,7 +52,7 @@ class _Desktop extends StatelessWidget {
               ],
             ),
             Text(
-              "© 2020 ALKEBUWARE LLC. All Rights Reserved",
+              "© 2024 ALKEBUWARE LLC. All Rights Reserved",
               style: white16,
             )
           ],
@@ -105,7 +105,7 @@ class _Mobile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 16),
               child: Text(
-                "© 2022 ALKEBUWARE LLC. All Rights Reserved",
+                "© 2024 ALKEBUWARE LLC. All Rights Reserved",
                 style: white16,
               ),
             )

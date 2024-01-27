@@ -1,3 +1,4 @@
+import 'package:alkebuware_website/extensions/build_context.dart';
 import 'package:alkebuware_website/main.dart';
 import 'package:alkebuware_website/text.dart';
 import 'package:alkebuware_website/widgets/dialog.dart';
@@ -45,15 +46,19 @@ class NavigationButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentPath = GoRouter.of(context).routeInformationProvider.value.uri.path;
     return ListenableBuilder(
         listenable: GoRouter.of(context).routeInformationProvider,
         builder: (context, _) {
+          final stack = context.currentNavigationStack;
+          String? previousRoute;
+          if (stack.length > 1) {
+            previousRoute = stack[stack.length - 2];
+          }
           return RoundedButton(
             padding: EdgeInsets.symmetric(vertical: 0, horizontal: 24),
             text: text,
             textStyle: titleWhite36Bold,
-            backgroundColor: currentPath == routeName
+            backgroundColor: previousRoute == routeName
                 ? Colors.white12
                 : Colors.transparent,
             onTap: () {
