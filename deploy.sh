@@ -8,5 +8,5 @@ password=$2
 remote_path=$3
 
 #cmd.exe /c C:/flutter-beta/bin/flutter.bat build web --release
-flutter build web --release --web-renderer canvaskit
+flutter build web --release
 ncftpput -R -v -u "${username}" -p "${password}" ftp.alkebuware.com "${remote_path}" build/web/*
